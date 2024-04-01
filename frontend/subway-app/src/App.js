@@ -34,7 +34,6 @@ function App() {
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Homee/>} />
           <Route path="/admin" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
 
           <Route path="/users" element={<UserList />} />
           <Route path="/stations" element={<StationsList />} />

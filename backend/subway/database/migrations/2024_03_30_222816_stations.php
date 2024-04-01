@@ -18,8 +18,8 @@ return new class extends Migration
             $table->double('lng');
             $table->string('city');
             $table->string('status');
-            $table->timestamp('openning_at');
-            $table->timestamp('closing_at');
+            $table->time('openning_at');
+            $table->time('closing_at');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

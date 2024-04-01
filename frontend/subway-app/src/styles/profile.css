@@ -94,7 +94,7 @@ body {
 .url a:hover, .url .active {
     background-color: #0B6C88;
     border-radius: 28px;
-    color: #000;
+    color: white;
     margin-left: 14%;
     width: 65%;
 }
@@ -137,7 +137,7 @@ body {
     background-color: #a8a5a529;
     border-radius: 18px;
     box-shadow: 1px 1px 8px 0 grey;
-     height: 250px;
+     height: 300px;
     margin-bottom: 20px;
 
 }
@@ -269,4 +269,40 @@ body {
   
   .requestFormLeft >select{
     margin-bottom: 10px;
+  }
+  .rating span:focus {
+    outline: 0;
+  }
+  
+  .rating span,
+  .rating:hover span:hover~span {
+    font-family: sans-serif;
+    font-size: 30px;
+    line-height: 1.5em;
+    width: .9em;
+    height: 1em;
+    padding-right: .1em;
+    color: #999; /* unselected-color */
+    text-shadow: 0 0 1px #444;
+  }
+  
+  .rating span:before {
+    content: '\2605'; /* Heart symbol */
+  }
+  
+  .rating .clicked {
+    color: #FAD273; /* selected-color */
+  }
+  
+  .rating > span:hover,
+  .rating .clicked:hover,
+  .rating:hover span {
+    color: #FAD273; /* lighten(selected-color, 10%) */
+    text-shadow: 0 0 1px #000;
+    cursor: pointer;
+  }
+  
+  .rating:hover span {
+    /* IE6-7 hack to not show active state on rating hover */
+    _color: #999; /* unselected-color */
   }
