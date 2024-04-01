@@ -1,5 +1,4 @@
-import Sidebar from './components/admin/Sidebar'
-import Topbar from "./components/admin/Topbar";
+
 import "./styles/App.css";
 import Home from "./components/admin/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -23,7 +22,6 @@ import NewMessage from "./components/admin/NewMessage";
 import React from 'react';
 import Profile from './components/passenger/profile';
 import './styles/index.css';
-import homee from './pages/home';
 
 function App() {
   return (
@@ -31,8 +29,7 @@ function App() {
 
         <Routes>
         <Route path="/profile" element={<Profile />} />
-          <Route path="/admin" element={<Home />} />
-          <Route path="/" element={<homee />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/users" element={<UserList />} />
           <Route path="/stations" element={<StationsList />} />

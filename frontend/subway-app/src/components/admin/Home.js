@@ -1,5 +1,4 @@
 import '../../styles/admin/home.css'
-import WidgetSm from './WidgetSm';
 import Coins from './Coins';
 import HomeTrips from './HomeTrips';
 import Topbar from './Topbar';

@@ -32,6 +32,7 @@ function StationsList() {
       renderCell: (params) => {
         return (
           
+          
           <>
             <Link to={"/station/" + params.row.id}>
               <button className="userListEdit">Edit</button>
@@ -46,6 +47,10 @@ function StationsList() {
     },
   ];
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="userList">
     <div className="productTitleContainer">
         <h1 className="productTitle">Stations</h1>
@@ -61,6 +66,9 @@ function StationsList() {
         checkboxSelection
       />
     </div>
+    </div>
+    </div>
+
   );
 }
 export default StationsList;

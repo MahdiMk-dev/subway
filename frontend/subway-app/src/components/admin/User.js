@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import '../../styles/admin/user.css'
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 function User() {
     const [data, setData] = useState({});
     const { userId } = useParams(); // Get the userId from URL params
