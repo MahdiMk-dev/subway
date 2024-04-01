@@ -2,6 +2,7 @@ import '../../styles/admin/widgetlg.css'
 import { tripRows } from "../../dummyData";
 import { coinRows } from "../../dummyData";
 import { useState } from "react";
+
 function Coins() {
       const [trips, setTrips] = useState(tripRows);
     const[coins, setCoins] = useState(coinRows);

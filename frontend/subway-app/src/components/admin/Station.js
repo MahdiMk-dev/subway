@@ -5,6 +5,8 @@ import {Publish} from '@mui/icons-material'
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { stationRows } from "../../dummyData";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 
 function Station() {
    const [data, setData] = useState({});
@@ -18,6 +20,10 @@ function Station() {
     }
 }, [stationId]); 
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Station</h1>
@@ -61,6 +67,8 @@ function Station() {
           </form>
       </div>
     </div>
+    </div>
+</div>
   );
 }
 export default Station;

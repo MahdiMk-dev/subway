@@ -5,6 +5,8 @@ import { DeleteOutline } from "@mui/icons-material";
 import { coinRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 function CoinsRequests() {
   const [data, setData] = useState(coinRows);
   const handleApprove = (id) => {
@@ -35,6 +37,10 @@ function CoinsRequests() {
     },
   ];
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="userList">
       <DataGrid
         rows={data}
@@ -44,6 +50,8 @@ function CoinsRequests() {
         checkboxSelection
       />
     </div>
+    </div>
+</div>
   );
 }
 export default CoinsRequests;

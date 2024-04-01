@@ -1,8 +1,13 @@
 import '../../styles/admin/newUser.css'
-
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 
 function NewRide() {
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="newUser">
       <h1 className="newUserTitle">New Ride</h1>
          <form className="productForm">
@@ -42,6 +47,8 @@ function NewRide() {
 
           </form>
     </div>
+    </div>
+</div>
   );
 }
 

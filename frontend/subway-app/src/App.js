@@ -1,6 +1,6 @@
 import Sidebar from './components/admin/Sidebar'
 import Topbar from "./components/admin/Topbar";
-import "./App.css";
+import "./styles/App.css";
 import Home from "./components/admin/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserList from "./components/admin/UserList";
@@ -9,9 +9,7 @@ import User from "./components/admin/User";
 import NewUser from "./components/admin/NewUser";
 import CoinsRequests from "./components/admin/CoinsRequests";
 import StationsList from "./components/admin/StationsList";
-import ProductList from "./components/admin/ProductList";
-import Product from "./components/admin/Product";
-import NewProduct from "./components/admin/NewProduct";
+
 import RidesList from "./components/admin/RidesList";
 import FeedbacksList from "./components/admin/FeedbacksList";
 import MessagesList from "./components/admin/MessagesList";
@@ -24,16 +22,18 @@ import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
 import React from 'react';
 import Profile from './components/passenger/profile';
+import './styles/index.css';
+import homee from './pages/home';
 
 function App() {
   return (
     <Router>
-<Topbar />
-      <div className="container">
-        <Sidebar />
+
         <Routes>
         <Route path="/profile" element={<Profile />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Home />} />
+          <Route path="/" element={<homee />} />
+
           <Route path="/users" element={<UserList />} />
           <Route path="/stations" element={<StationsList />} />
            <Route path="/rides" element={<RidesList />} />
@@ -46,15 +46,12 @@ function App() {
            <Route path="/newstation" element={<NewStation />} />
           <Route path="/newtrip" element={<NewTrip />} />
           <Route path="/newride" element={<NewRide />} />
-          <Route path="/products" element={<ProductList />} />
           <Route path="/trips" element={<TripsList />} />
-          <Route path="/product/:productId" element={<Product />} />
-          <Route path="/newproduct" element={<NewProduct />} />
+
           <Route path="/reviews" element={<FeedbacksList />} />
           <Route path="/messages" element={<MessagesList />} />
           <Route path="/newmessage" element={<NewMessage />} />
         </Routes>
-      </div>
     </Router>
   );
 }
