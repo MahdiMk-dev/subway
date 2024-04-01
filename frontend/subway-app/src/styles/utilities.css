@@ -1,0 +1,18 @@
+.float{
+    display: flex;
+}
+.space-even{
+    justify-content: space-evenly;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-around{
+    justify-content: space-around;
+}
+.gap{
+    gap:30px
+}
+.row{
+    margin-bottom: 20px;
+}

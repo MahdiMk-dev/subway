@@ -1,0 +1,23 @@
+.inputs{
+    border-color: transparent;
+    border-radius: 0px 10px 10px 0px;
+    font-size: 15px;
+}
+.main{
+    margin-top: 7%;
+}
+.card{
+    border-radius: 20px;
+    background-color: white;
+    padding: 15px;
+    font-size: 15px;
+    height: fit-content;
+}
+.link-text{
+    color: gray;
+    background-color: transparent;
+    font-size: 16px;
+}
+.image{
+    border-radius: 10px;
+}
