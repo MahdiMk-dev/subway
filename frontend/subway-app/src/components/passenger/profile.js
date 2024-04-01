@@ -13,6 +13,7 @@ function Profile() {
    const [showRequestCoins, setShowRequestCoins] = useState(false);
    const [showTripIpcomming, setTripIpcomming] = useState(false);
    const [showProfile, setProfile] = useState(true);
+   const [EditProfile, setEditProfile] = useState(false);
    
    
   useEffect(() => {
@@ -26,6 +27,7 @@ function Profile() {
     setShowRequestCoins(menuItem === 'requestCoins');
     setTripIpcomming(menuItem === 'upcomingTrips');
     setProfile(menuItem === 'profile');
+    setEditProfile(menuItem === 'editprofile');
   };
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -77,24 +79,25 @@ function Profile() {
         </div>
         <div className="sidenav-url">
           <div className="url">
-            <a href="#settings" className={showProfile ? 'active' : ''} onClick={() => {handleMenuClick('profile');setProfile(true);setShowTripHistory(false);setShowRequestCoins(false);setTripIpcomming(false)}}>
+            <a href="#settings" className={showProfile ? 'active' : ''} onClick={() => {handleMenuClick('profile');setEditProfile(false);setProfile(true);setShowTripHistory(false);setShowRequestCoins(false);setTripIpcomming(false)}}>
             Profile</a>
             <hr align="center" />
           </div>
           <div className="url">
-            <a href="#settings">Edit Info</a>
+            <a href="#settings" className={EditProfile ? 'active' : ''} onClick={() => {handleMenuClick('editprofile');setEditProfile(true);setProfile(false);setShowTripHistory(false);setShowRequestCoins(false);setTripIpcomming(false)}}>
+            Edit Info</a>
             <hr align="center" />
           </div>
           <div className="url">
-            <a href="#settings" className={showTripHistory ? 'active' : ''} onClick={() => {handleMenuClick('tripHistory');setProfile(false);setShowTripHistory(true);setShowRequestCoins(false);setTripIpcomming(false)}}>Trip History</a>
+            <a href="#settings" className={showTripHistory ? 'active' : ''} onClick={() => {handleMenuClick('tripHistory');setEditProfile(false);setProfile(false);setShowTripHistory(true);setShowRequestCoins(false);setTripIpcomming(false)}}>Trip History</a>
             <hr align="center" />
           </div>
           <div className="url">
-            <a href="#settings" className={showRequestCoins ? 'active' : ''} onClick={() => {handleMenuClick('requestCoins');setProfile(false);setShowRequestCoins(true);setShowTripHistory(false);;setTripIpcomming(false)}}>Request Coins</a>
+            <a href="#settings" className={showRequestCoins ? 'active' : ''} onClick={() => {handleMenuClick('requestCoins');setEditProfile(false);setProfile(false);setShowRequestCoins(true);setShowTripHistory(false);;setTripIpcomming(false)}}>Request Coins</a>
             <hr align="center" />
           </div>
            <div className="url">
-            <a href="#settings" className={showTripIpcomming ? 'active' : ''} onClick={() => {handleMenuClick('upcomingTrips');setProfile(false);setShowRequestCoins(false);setShowTripHistory(false);;setTripIpcomming(true)}}>Upcomming Trips</a>
+            <a href="#settings" className={showTripIpcomming ? 'active' : ''} onClick={() => {handleMenuClick('upcomingTrips');setEditProfile(false);setProfile(false);setShowRequestCoins(false);setShowTripHistory(false);;setTripIpcomming(true)}}>Upcomming Trips</a>
             <hr align="center" />
           </div>
         </div>
@@ -171,6 +174,33 @@ function Profile() {
                   />
                   
                   <button className="requestButton">Request</button>
+              </div>
+              </form>
+
+          </div>
+          </div>
+        )}
+        {EditProfile  && (
+        <div className="coins">
+         <h2>Edit Profile</h2>
+          <div className="form-card">
+      
+            <form className="coinsForm">
+              <div className="coinsFormLeft">
+                 <label>Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                  />
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                  
+                  <button className="requestButton">Update</button>
               </div>
               </form>
 
