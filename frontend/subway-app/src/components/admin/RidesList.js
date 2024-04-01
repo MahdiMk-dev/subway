@@ -5,6 +5,9 @@ import { DeleteOutline } from "@mui/icons-material";
 import { rideRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
+
 function RidesList() {
   const [data, setData] = useState(rideRows);
   const handleDelete = (id) => {
@@ -42,6 +45,10 @@ function RidesList() {
     distance: `${ride.distance} Km`
   }));
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="userList">
     <div className="productTitleContainer">
         <h1 className="productTitle">Rides</h1>
@@ -57,6 +64,8 @@ function RidesList() {
         checkboxSelection
       />
     </div>
+    </div>
+</div>
   );
 }
 export default RidesList;

@@ -5,6 +5,8 @@ import {Publish} from '@mui/icons-material'
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { tripRows } from "../../dummyData";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 
 function Trips() {
    const [data, setData] = useState({});
@@ -18,6 +20,10 @@ function Trips() {
     }
 }, [tripId]); 
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Trip</h1>
@@ -66,6 +72,8 @@ function Trips() {
           </form>
       </div>
     </div>
+    </div>
+</div>
   );
 }
 export default Trips;

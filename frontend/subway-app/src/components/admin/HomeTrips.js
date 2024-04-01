@@ -2,6 +2,7 @@ import '../../styles/admin/widgetlg.css'
 import { tripRows } from "../../dummyData";
 import { coinRows } from "../../dummyData";
 import { useState } from "react";
+
 function Coins() {
       const [trips, setTrips] = useState(tripRows);
 
@@ -9,6 +10,7 @@ function Coins() {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
   return (
+    
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Latest Trips</h3>
       <table className="widgetLgTable">

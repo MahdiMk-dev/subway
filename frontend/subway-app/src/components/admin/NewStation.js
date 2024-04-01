@@ -1,8 +1,13 @@
 import '../../styles/admin/newUser.css'
-
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
 
 function NewUser() {
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="newUser">
       <h1 className="newUserTitle">New Station</h1>
       <form className="productForm">
@@ -42,6 +47,8 @@ function NewUser() {
 
           </form>
     </div>
+    </div>
+</div>
   );
 }
 

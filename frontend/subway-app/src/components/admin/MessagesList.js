@@ -5,6 +5,9 @@ import { DeleteOutline } from "@mui/icons-material";
 import { messageRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
+
 function MessagesList() {
   const [data, setData] = useState(messageRows);
   const handleDelete = (id) => {
@@ -30,6 +33,10 @@ function MessagesList() {
     },
   ];
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="userList">
     <div className="productTitleContainer">
         <h1 className="productTitle">Messages</h1>
@@ -45,6 +52,8 @@ function MessagesList() {
         checkboxSelection
       />
     </div>
+    </div>
+</div>
   );
 }
 export default MessagesList;

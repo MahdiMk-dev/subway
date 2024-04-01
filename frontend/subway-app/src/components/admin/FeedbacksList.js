@@ -5,6 +5,9 @@ import { DeleteOutline } from "@mui/icons-material";
 import { feedbackRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Topbar from './Topbar';
+import Sidebar from './Sidebar';
+
 function FeedbacksList() {
   const [data, setData] = useState(feedbackRows);
   const handleDelete = (id) => {
@@ -18,6 +21,10 @@ function FeedbacksList() {
     { field: "review_content", headerName: "Review", width: 400 }
   ];
   return (
+    <div>
+    <Topbar />
+      <div className="container">
+        <Sidebar />
     <div className="userList">
       <DataGrid
         rows={data}
@@ -27,6 +34,8 @@ function FeedbacksList() {
         checkboxSelection
       />
     </div>
+    </div>
+</div>
   );
 }
 export default FeedbacksList;
