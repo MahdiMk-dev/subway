@@ -1,6 +1,6 @@
 import Sidebar from './components/admin/Sidebar'
 import Topbar from "./components/admin/Topbar";
-import "./App.css";
+import "./styles/App.css";
 import Home from "./components/admin/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserList from "./components/admin/UserList";
