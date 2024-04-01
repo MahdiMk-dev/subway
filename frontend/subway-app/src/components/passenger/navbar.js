@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div >
       <header >
-        <nav>
+        <nav className="passenger">
           <Link to="/"> Home</Link>
           <Link to="/Branches">Branches</Link>
           <Link to="/Login">Login</Link>

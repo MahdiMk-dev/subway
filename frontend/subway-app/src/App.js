@@ -19,8 +19,10 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
+import Profile from "./components/passenger/Profile";
+import Homee from "./components/passenger/Home";
+import TripReview from "./components/passenger/TripReview";
 import React from 'react';
-import Profile from './components/passenger/profile';
 import './styles/index.css';
 
 function App() {
@@ -29,7 +31,10 @@ function App() {
 
         <Routes>
         <Route path="/profile" element={<Profile />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/tripreview/:tripId" element={<TripReview />} />
+          <Route path="/" element={<Homee/>} />
+          <Route path="/admin" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
 
           <Route path="/users" element={<UserList />} />
           <Route path="/stations" element={<StationsList />} />

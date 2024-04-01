@@ -1,13 +1,73 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
-import profileImage from '../../images/profile2.png'; // import the image
+import profileImage from '../../images/profile2.png'; 
+import { DataGrid } from '@mui/x-data-grid';
+import { tripRows } from "../../dummyData";
+import Navbar from './Navbar';// import the image
 
 function Profile() {
+  const [data, setData] = useState([]);
+   const [upcommingdata, setupcommingdata] = useState([]);
+   const [showTripHistory, setShowTripHistory] = useState(false);
+   const [showRequestCoins, setShowRequestCoins] = useState(false);
+   const [showTripIpcomming, setTripIpcomming] = useState(false);
+   const [showProfile, setProfile] = useState(true);
+   
+   
+  useEffect(() => {
+    // Simulating data fetching or any asynchronous operation
+    // Set data after fetching or any asynchronous operation
+    setData(tripRows);
+    setupcommingdata(tripRows)
+  }, []);
+    const handleMenuClick = (menuItem) => {
+    setShowTripHistory(menuItem === 'tripHistory');
+    setShowRequestCoins(menuItem === 'requestCoins');
+    setTripIpcomming(menuItem === 'upcomingTrips');
+    setProfile(menuItem === 'profile');
+  };
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
+  };
+  console.log(data)
+  const columns = [
+    { field: "id", headerName: "ID", width: 90, hide: true },
+    { field: "origin_station", headerName: "Origin", width: 120 },
+    { field: "destination_station", headerName: "Destination", width: 120 },
+    { field: "price", headerName: "Price", width: 120 },
+    { field: "status", headerName: "Status", width: 120 },
+    { field: "departure_time", headerName: "Departure Time", width: 120 },
+    { field: "arrival_time", headerName: "Arrival Time", width: 120 },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={"/tripreview/" + params.row.id}>
+              <button className="reviewListEdit">Add Review</button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+    const upcommingcolumns = [
+    { field: "id", headerName: "ID", width: 90, hide: true },
+    { field: "origin_station", headerName: "Origin", width: 120 },
+    { field: "destination_station", headerName: "Destination", width: 120 },
+    { field: "price", headerName: "Price", width: 120 },
+    { field: "status", headerName: "Status", width: 120 },
+    { field: "departure_time", headerName: "Departure Time", width: 120 },
+    { field: "arrival_time", headerName: "Arrival Time", width: 120 },
+  ];
 
 
   return (
     <div>
+    <Navbar />
       <div className="sidenav">
         <div className="profile">
         <img src={profileImage} alt="" width="100" height="100" />
@@ -17,16 +77,29 @@ function Profile() {
         </div>
         <div className="sidenav-url">
           <div className="url">
-            <a href="#profile" className="active">Profile</a>
+            <a href="#settings" className={showProfile ? 'active' : ''} onClick={() => {handleMenuClick('profile');setProfile(true);setShowTripHistory(false);setShowRequestCoins(false);setTripIpcomming(false)}}>
+            Profile</a>
             <hr align="center" />
           </div>
           <div className="url">
             <a href="#settings">Edit Info</a>
             <hr align="center" />
           </div>
+          <div className="url">
+            <a href="#settings" className={showTripHistory ? 'active' : ''} onClick={() => {handleMenuClick('tripHistory');setProfile(false);setShowTripHistory(true);setShowRequestCoins(false);setTripIpcomming(false)}}>Trip History</a>
+            <hr align="center" />
+          </div>
+          <div className="url">
+            <a href="#settings" className={showRequestCoins ? 'active' : ''} onClick={() => {handleMenuClick('requestCoins');setProfile(false);setShowRequestCoins(true);setShowTripHistory(false);;setTripIpcomming(false)}}>Request Coins</a>
+            <hr align="center" />
+          </div>
+           <div className="url">
+            <a href="#settings" className={showTripIpcomming ? 'active' : ''} onClick={() => {handleMenuClick('upcomingTrips');setProfile(false);setShowRequestCoins(false);setShowTripHistory(false);;setTripIpcomming(true)}}>Upcomming Trips</a>
+            <hr align="center" />
+          </div>
         </div>
       </div>
-      <div className="main">
+      <div className="mainprofile">
         <h2>Personal Info</h2>
         <div className="card">
           <div className="card-body">
@@ -53,10 +126,58 @@ function Profile() {
             </table>
           </div>
         </div>
-        <h2>Previous Trips</h2>
-        <div className="card">
+        {showTripHistory && data.length > 0 && (
+          <div className="tripshistory">
+          <h2>Previous Trips</h2>
+          <div className="table-card">
+           
+            <DataGrid
+              rows={data}
+              disableSelectionOnClick
+              columns={columns}
+              pageSize={8}
+              checkboxSelection
+            />
+          </div>
+          </div>
+        )}
+        {showTripIpcomming && upcommingdata.length > 0 && (
+          <div className="tripshistory">
+          <h2>Upcomming Trips</h2>
+          <div className="table-card">
+           
+            <DataGrid
+              rows={upcommingdata}
+              disableSelectionOnClick
+              columns={upcommingcolumns}
+              pageSize={8}
+              checkboxSelection
+            />
+          </div>
+          </div>
+        )}
+                {showRequestCoins  && (
+        <div className="coins">
+         <h2>Request Coins</h2>
+          <div className="form-card">
+      
+            <form className="coinsForm">
+              <div className="coinsFormLeft">
+                 <label>Amount</label>
+                  <input
+                    type="number"
+                    id="amount"
+                    placeholder="amount"
+                  />
+                  
+                  <button className="requestButton">Request</button>
+              </div>
+              </form>
 
-            </div>
+          </div>
+          </div>
+        )}
+         
           </div>
         </div>
 
