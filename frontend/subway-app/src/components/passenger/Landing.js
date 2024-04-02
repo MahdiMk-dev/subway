@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 function Landing() {
   const [branches, SetBranch] = useState([]);
   const [all, SetAll] = useState([]);
-  const displayBranch = () => {
+  const getAllBranches = () => {
     const arr = [];
     for (let i = 0; i < 7; i++) {
       const branch = (
@@ -17,9 +17,9 @@ function Landing() {
       );
       arr.push(branch);
     }
-    SetBranch(arr);
+    SetAll(arr);
   };
-  const getAllBranches = () => {
+  const displayBranch = () => {
     const arr = [];
     for (let i = 0; i < 12; i++) {
       const branch = (
@@ -27,7 +27,7 @@ function Landing() {
       );
       arr.push(branch);
     }
-    SetAll(arr);
+    SetBranch(arr);
   };
   useEffect(() => {
     displayBranch();
@@ -81,15 +81,10 @@ function Landing() {
             </div>
           </div>
           <div className="row float space-between">
-            <div className="link-text">Recomended</div>
-            <div>
-              <Link to="Branches" className="link-text">
-                See more -
-              </Link>
-            </div>
+            <div className="link-text">Upcoming Trains</div>
           </div>
-          <div id="display">
-            {branches.map((branch) => {
+          <div id="display" className="over-flow">
+            {all.map((branch) => {
               return <div className="row">{branch}</div>;
             })}
           </div>
@@ -103,8 +98,12 @@ function Landing() {
           />
         </div>
       </div>
+      <div className="row float space-between">
+            <div className="link-text">Recomended</div>
+          </div>
       <div className="cards row float over-flow space-even gap">
-          {all.map((branch) => {
+
+          {branches.map((branch) => {
               return <div className="row">{branch}</div>;
             })}
           </div>

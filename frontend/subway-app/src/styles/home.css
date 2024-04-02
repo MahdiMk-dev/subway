@@ -1,17 +1,19 @@
 .button{
     border-radius: 8px;
-    background-color: #FAD273;
+    background-color: white;
     border-color: transparent;
+    width: fit-content;
+    margin-bottom: 10px;
 }
 .button:hover{
     cursor: pointer;
-    background-color: white;
+    filter: brightness(50%);
 }
 .seacrh{
     border-radius: 0px 8px 8px 0px;
     background-color: #FAD273;
     border-color: transparent;
-    box-shadow: 10px 10px 10px -3px rgba(0,0,0,0.50);
+    
     height: 100%;
 }
 
@@ -29,7 +31,7 @@
 .card{
     border-radius: 20px 0px 0px 20px;
     background-color: white;
-    box-shadow: 18px 10px 10px -3px rgba(0,0,0,0.50);
+    
     padding: 15px;
     font-size: 15px;
     height: fit-content;
@@ -41,26 +43,31 @@
 }
 .destination{
     border-radius: 10px;
-    height: 100px;
-    width: 80px;
+    height: 150px;
+    width: 130px;
+    margin-right: 10px;
 }
 .image{
     border-radius: 10px;
 }
 .display-card{
     align-items: center;
-    background-color: white;
+    background-color: #FAD273;
     border-radius: 10px;
     padding: 10px;    
     text-align: center;
 }
 .displayBranch{
     background-color: rgb(0, 0, 0,30%) ;    
-    border-radius: 15px;
-    box-shadow: 10px 10px 10px -3px rgba(0,0,0,0.50);
+    border-radius: 15px;    
     color:white;
     padding: 10px;
 }
 .display-header{
     font-size: 26px;
+}
+.display-btns{
+    text-align: left;
+    padding-left: 10px;
+    row-gap: 10px;
 }

@@ -10,7 +10,14 @@ function DisplayBranch({ destination, time, price }) {
           <div>Departure time: {time}</div>
           <div>Ticket price: {price} </div>
         </div>
-        <button className="button">Buy ticket</button>
+        <div className="display-btns">
+          <div><button className="button">Buy ticket</button></div>
+          <div><input
+            type="number"
+            className="button"
+            placeholder="ticket amount"
+          /></div>
+        </div>
       </div>
     </div>
   );
