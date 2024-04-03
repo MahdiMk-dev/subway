@@ -1,4 +1,3 @@
-
 import "./styles/App.css";
 import Home from "./components/admin/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -34,10 +33,8 @@ import './styles/index.css';
 
 function App() {
   return (
-    <AuthProvider>
     <Router>
-
-        <Routes>
+      <Routes>
         <Route path="/profile" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Homee/>} />
