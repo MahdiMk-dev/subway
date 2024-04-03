@@ -1,7 +1,16 @@
 import "../../styles/utilities.css";
 import "../../styles/home.css";
+import { useState } from "react";
+import axios from "axios";
+import dateFormat, { masks } from "dateformat";
 
 function DisplayBranchCard({ destination, time, price, imgurl }) {
+  const [amount,SetAmount] = useState(0)
+  const buyTicket = () =>{
+    axios.post("//localhost:8000/api/buytickets",amount).then((respone)=>{
+      console.log(respone.message)
+    })
+  }
   return (
     <div className="display-card float space-even">
       <div>
@@ -10,17 +19,20 @@ function DisplayBranchCard({ destination, time, price, imgurl }) {
       <div>
         <div className="display-header">{destination}</div>
         <div className="display-body float space-between">
-          <div className="float space-between gap-6">
-            <div>Departure time: {time}</div>
+          <div className="float space-between ">
+          <div>Departure time: {dateFormat(time, "ddd, mmm dS, h:MM TT")}</div>
             <div>Ticket price: {price} </div>
           </div>
         </div>
-        <div className="row float gap">
-          <button className="button">Buy ticket</button>
+        <div className="inputs row float gap">
+          <button className="button" onClick={buyTicket}>Buy ticket</button>
           <input
             type="number"
             className="amount"
-            placeholder="ticket amount"
+            placeholder="tickets"
+            onChange={(e)=>{
+                SetAmount(e.target.value)
+            }}
           />
         </div>
       </div>

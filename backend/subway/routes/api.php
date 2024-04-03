@@ -17,6 +17,7 @@ use App\Http\Controllers\PassengerLoginController;
 use App\Http\Controllers\PassengerGetDataController;
 
 use App\Http\Controllers\PassengerSignupController;
+use App\Http\Controllers\DisplayTrips;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +88,5 @@ Route::delete('/delete_admin_ride/{id}', [AdminRidesController::class, 'delete_r
 Route::post('/updateadminride/', [AdminRidesController::class, 'updateride']);
 Route::get('/messagepassenger/', [AdminMessagesController::class, 'getmessagepassenger']);
 Route::post('/create_message/', [AdminMessagesController::class, 'create_message']);
+
+Route::get('/displayTrips', [DisplayTrips::class, 'displayAll']);

@@ -26,11 +26,15 @@ class DisplayTrips extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(trip $trip)
+    public function displayAll()
     {
-        return view('user.profile', [
-            'user' => $trip::findOrFail($trip)
-        ]);
+        $trips = trip::select('*')->join('stations','stations.id','=','origin_station_id');
+        if ($trips) {
+            // Redirect back to the user profile page or return a response as needed
+            return response()->json(['status' => 'success', 'trips' => $trips->get()]);
+        } else {
+            return response()->json(['status' => 'fail', 'message' => 'No trips where found']);
+        }
     }
 
     /**

@@ -1,25 +1,25 @@
-.float{
-    display: flex;
+.float {
+  display: flex;
 }
-.space-even{
-    justify-content: space-evenly;
+.space-even {
+  justify-content: space-evenly;
 }
-.space-between{
-    justify-content: space-between;
+.space-between {
+  justify-content: space-between;
 }
-.space-around{
-    justify-content: space-around;
+.space-around {
+  justify-content: space-around;
 }
-.over-flow{
-    overflow-x: auto;
-    height:200px;
+.over-flow {
+  overflow-x: auto;
+  height: 200px;
 }
-.gap{
-    gap:30px
+.gap {
+  gap: 30px;
 }
-.gap-6{
-    gap:60px
+.gap-6 {
+  gap: 60px;
 }
-.row{
-    margin: 10px;
+.row {
+  margin: 10px 0px 10px 0px;
 }

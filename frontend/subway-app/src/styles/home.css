@@ -1,91 +1,115 @@
-.display-btns .button{
-    border-radius: 8px;
-    background-color: #FAD273;
+.displayBranch .ticketsCount {
+    border-radius: 5px;
     border-color: transparent;
-    width: fit-content;
-    margin-bottom: 10px;
-}
-.displayBranch .ticketsCount{
-max-width: 50px;
-}
-.Landing .button:hover{ 
-    cursor: pointer;
-    filter: brightness(50%);
-}
-.Landing .seacrh{
-    border-radius: 0px 8px 8px 0px;
-    background-color: #FAD273;
-    border-color: transparent;
-    
-    height: 100%;
-}
-
-.inputs{
-    border-color: transparent;
-    border-radius: 0px 10px 10px 0px;
-    font-size: 15px;
-}
-.main{
-    margin-top: 7%;
-}
-.cards{
-    width: 100%;
-}
-.card{
-    border-radius: 20px 0px 0px 20px;
     background-color: white;
-    
-    padding: 15px;
-    font-size: 15px;
-    height: fit-content;
-}
-.link-text{
-    color: gray;
-    background-color: transparent;
     font-size: 16px;
-}
-.destination{
-    border-radius: 10px;
-    height: 150px;
-    width: 130px;
-    margin-right: 10px;
-}
-.image{
-    border-radius: 10px;
-}
-.display-card{
-    align-items: center;
-    background-color: #FAD273;
-    border-radius: 10px;
-    padding: 10px;    
-    text-align: center;
-}
-.display-card .button{
-
-    background-color: #0B6C88;
-    color: white;
-
-}
-.display-card .amount{
-
-    background-color: #FAD273;
-    opacity: 50%    ;
-    color: white;
-    max-width: 50px;
+    opacity: 70%;
+    color: black;
+    max-width: 80px;
     max-height: 25px;
+    margin-top: 10px;
+}
+.displayBranch .button {
+  background-color: #fad273;
+  border-color: transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0px;
+}
+.Landing .button:hover {
+  cursor: pointer;
+  filter: brightness(50%);
+}
+.Landing .seacrh {
+  border-radius: 0px 8px 8px 0px;
+  background-color: #fad273;
+  border-color: transparent;
+  height: 100%;
+  margin: 0px;
+}
 
+.inputs {
+  border-color: transparent;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 15px;
 }
-.displayBranch{
-    background-color: #0B6C88 ;    
-    border-radius: 15px;    
-    color:#FAD273;
-    padding: 10px;
+.main {
+  margin-top: 5%;
+  padding: 15px;
 }
-.display-header{
-    font-size: 26px;
+.cards {
+  width: 100%;
+  height: fit-content;
 }
-.display-btns{
-    text-align: left;
-    padding-left: 10px;
-    row-gap: 10px;
+.card {
+  border-radius: 20px 0px 0px 20px;
+  background-color: white;
+  padding: 15px;
+  font-size: 15px;
+  height: fit-content;
+}
+.link-text {
+  color: gray;
+  background-color: transparent;
+  font-size: 16px;
+}
+.destination {
+  border-radius: 10px;
+  height: 150px;
+  width: 130px;
+  margin-right: 10px;
+}
+.image {
+  border-radius: 10px;
+}
+.display-card {
+  align-items: center;
+  background-color: #fad273;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+.display-card .button {
+  background-color: #0b6c88;
+  border-color: transparent;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  width: fit-content;
+  white-space: nowrap;
+}
+.display-card .amount {
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: white;
+  font-size: 16px;
+  opacity: 50%;
+  color: black;
+  max-width: 80px;
+  max-height: 25px;
+}
+.display-card .inputs {
+  align-items: center;
+  align-content: center;
+}
+.displayBranch {
+  background-color: #0b6d88ab;
+  border-radius: 15px;
+  color: white;
+  padding: 10px;
+}
+.display-header {
+  font-size: 26px;
+}
+.display-btns {
+  text-align: left;
+  padding-left: 10px;
+  row-gap: 10px;
+}
+.container {
+  height: 300px;
+  max-height: 300px;
+  padding: 10px;
 }

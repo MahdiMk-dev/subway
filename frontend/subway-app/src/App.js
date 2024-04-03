@@ -28,12 +28,8 @@ import Login from "./components/passenger/Login";
 
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
-import Landing from "./components/passenger/Landing";
 import MaP from "./components/passenger/Map";
-import Register from './components/passenger/Register';
-
-import React from 'react';
-import './styles/index.css';
+import Register from "./components/passenger/Register";
 
 function App() {
   return (
@@ -61,35 +57,10 @@ function App() {
         <Route path="/messages" element={<MessagesList />} />
         <Route path="/newmessage" element={<NewMessage />} />
         <Route path="/Map" element={<MaP />} />
+        <Route path="/admin_login" element={<AdminLogin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-          <Route path="/tripreview/:tripId" element={<TripReview />} />
-          <Route path="/" element={<Landing/>} />
-          <Route path="/admin" element={<Home />} />
-
-          <Route path="/users" element={<UserList />} />
-          <Route path="/stations" element={<StationsList />} />
-           <Route path="/rides" element={<RidesList />} />
-          <Route path="/user/:userId" element={<User />} />
-          <Route path="/trip/:tripId" element={<Trips />} />
-          <Route path="/ride/:rideId" element={<Rides />} />
-          <Route path="/station/:stationId" element={<Station />} />
-          <Route path="/admin_login" element={<AdminLogin />} />
-          <Route path="/login" element={<Login />} />
-
-          <Route path="/coins_requests" element={<CoinsRequests />} />
-          <Route path="/newUser" element={<NewUser />} />
-           <Route path="/newstation" element={<NewStation />} />
-          <Route path="/newtrip" element={<NewTrip />} />
-          <Route path="/newride" element={<NewRide />} />
-          <Route path="/trips" element={<TripsList />} />
-
-          <Route path="/reviews" element={<FeedbacksList />} />
-          <Route path="/messages" element={<MessagesList />} />
-          <Route path="/newmessage" element={<NewMessage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-        </Routes>
     </Router>
   );
 }
