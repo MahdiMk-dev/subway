@@ -53,17 +53,24 @@ max-width: 50px;
 .image{
     border-radius: 10px;
 }
+.display-card .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .display-card{
     align-items: center;
     background-color: #FAD273;
     border-radius: 10px;
     padding: 10px;    
     text-align: center;
+    color: #0B6C88;
 }
 .display-card .button{
 
     background-color: #0B6C88;
-    color: white;
+    color: #FAD273;
 
 }
 .display-card .amount{
@@ -80,6 +87,7 @@ max-width: 50px;
     border-radius: 15px;    
     color:#FAD273;
     padding: 10px;
+    color: white;
 }
 .display-header{
     font-size: 26px;

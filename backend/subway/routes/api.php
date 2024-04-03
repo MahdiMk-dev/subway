@@ -14,7 +14,7 @@ use App\Http\Controllers\AdminReviewController;
 use App\Http\Controllers\AdminUserController;
 
 use App\Http\Controllers\PassengerLoginController;
-use App\Http\Controllers\PassengerGetDataController;
+use App\Http\Controllers\PassengerController;
 
 use App\Http\Controllers\PassengerSignupController;
 
@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [PassengerLoginController::class, 'login']);
 Route::post('/signup', [PassengerSignupController::class, 'signup']);
-Route::post('/getInfo', [PassengerGetDataController::class, 'getInfo']);
+Route::post('/getInfo', [PassengerController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------
