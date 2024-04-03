@@ -83,6 +83,9 @@
   .productFormLeft {
     display: flex;
     flex-direction: column;
+    width: 58%;
+    margin: 20px;
+
   }
   
   .productFormLeft > label {
