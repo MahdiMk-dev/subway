@@ -1,6 +1,6 @@
 import "../../styles/utilities.css";
 import "../../styles/home.css";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 import { Link } from "react-router-dom";
 import DisplayBranch from "./DisplayBranch";
 function Home() {
