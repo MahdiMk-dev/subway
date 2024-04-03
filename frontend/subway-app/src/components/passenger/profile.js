@@ -4,7 +4,7 @@ import '../../styles/profile.css';
 import profileImage from '../../images/profile2.png'; 
 import { DataGrid } from '@mui/x-data-grid';
 import { tripRows } from "../../dummyData";
-import Navbar from './navbar';// import the image
+import Navbar from './Navbar';// import the image
 
 function Profile() {
   const [data, setData] = useState([]);

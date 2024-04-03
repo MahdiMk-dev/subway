@@ -89,6 +89,7 @@ const Register = () => {
                     </p>
                 </section>
             ) : (
+                <div  className="Passengerlogin">
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
@@ -172,6 +173,7 @@ const Register = () => {
                         </span>
                     </p>
                 </section>
+                </div>
             )}
         </>
     );

@@ -11,15 +11,15 @@ html {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
     color: #fff;
-}
+}*/
 
-body {
+.Passengerlogin {
     min-height: 100vh;
     background-image: url('../images/hero_stations.jpg');
     background-size:cover;
     background-attachment: fixed; 
     backdrop-filter: blur(5px);
-}*/
+}
 
 .App {
   display: flex;

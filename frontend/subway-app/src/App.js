@@ -20,11 +20,10 @@ import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
 import Profile from "./components/passenger/Profile";
-import Login from "./components/passenger/login";
+import Login from "./components/passenger/Login";
 
 import Homee from "./components/passenger/Home";
 import TripReview from "./components/passenger/TripReview";
-import Login from './components/passenger/Login';
 import Register from './components/passenger/Register';
 import RequireAuth from './components/passenger/RequireAuth';
 import Unauthorized from './components/passenger/Unauthorized';

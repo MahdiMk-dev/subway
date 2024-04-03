@@ -36,6 +36,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     margin: 15px;
+    font-size: 13px;
   }
 .sidenav {
 
@@ -137,7 +138,7 @@ body {
     background-color: #a8a5a529;
     border-radius: 18px;
     box-shadow: 1px 1px 8px 0 grey;
-     height: 300px;
+    height: 50%;
     margin-bottom: 20px;
 
 }
@@ -239,6 +240,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     margin: 15px;
+    
   }
   .requestForm{
   display: flex;
