@@ -19,14 +19,21 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
-import Profile from "./components/passenger/Profile";
+import Profile from "./components/passenger/profile"
 import Homee from "./components/passenger/Home";
 import TripReview from "./components/passenger/TripReview";
+import Login from './components/passenger/Login';
+import Register from './components/passenger/Register';
+import RequireAuth from './components/passenger/RequireAuth';
+import Unauthorized from './components/passenger/Unauthorized';
+import { AuthProvider } from './hooks/useAuth';
+
 import React from 'react';
 import './styles/index.css';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
 
         <Routes>
@@ -52,8 +59,12 @@ function App() {
           <Route path="/reviews" element={<FeedbacksList />} />
           <Route path="/messages" element={<MessagesList />} />
           <Route path="/newmessage" element={<NewMessage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route element={<RequireAuth allowedRoles={['user']} />}></Route>
         </Routes>
-    </Router>
+    </Router></AuthProvider>
   );
 }
 
