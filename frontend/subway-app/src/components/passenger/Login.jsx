@@ -3,12 +3,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import useAuth from '../../hooks/useAuth';
 import '../../styles/login.css';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-    const { setAuth } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -40,7 +38,6 @@ const Login = () => {
             });
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ email, roles, accessToken });
             setEmail('');
             setPassword('');
             navigate(from, { replace: true });

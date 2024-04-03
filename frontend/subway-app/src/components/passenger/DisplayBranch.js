@@ -14,7 +14,7 @@ function DisplayBranch({ destination, time, price }) {
           <div><button className="button">Buy ticket</button></div>
           <div><input
             type="number"
-            className="button"
+            className="ticketsCount"
             placeholder="ticket amount"
           /></div>
         </div>

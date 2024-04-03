@@ -21,12 +21,9 @@ import NewMessage from "./components/admin/NewMessage";
 import Profile from "./components/passenger/Profile";
 import Login from "./components/passenger/Login";
 
-import Homee from "./components/passenger/Home";
+import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
 import Register from './components/passenger/Register';
-import RequireAuth from './components/passenger/RequireAuth';
-import Unauthorized from './components/passenger/Unauthorized';
-import { AuthProvider } from './hooks/useAuth';
 
 import React from 'react';
 import './styles/index.css';
@@ -37,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/profile" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
-          <Route path="/" element={<Homee/>} />
+          <Route path="/" element={<Landing/>} />
           <Route path="/admin" element={<Home />} />
 
           <Route path="/users" element={<UserList />} />
@@ -62,10 +59,9 @@ function App() {
           <Route path="/newmessage" element={<NewMessage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
-          <Route element={<RequireAuth allowedRoles={['user']} />}></Route>
+
         </Routes>
-    </Router></AuthProvider>
+    </Router>
   );
 }
 

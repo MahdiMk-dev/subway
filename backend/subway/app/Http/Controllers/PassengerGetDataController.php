@@ -65,7 +65,7 @@ class PassengerGetDataController extends Controller
         }
 
     }
-    public function getRides(Request $request)
+    public function getTrips(Request $request)
     {
         if ($request->header('Authorization')) {
             // Extract the token from the Authorization header
@@ -81,7 +81,6 @@ class PassengerGetDataController extends Controller
                 // For example, you can use the JWTAuth facade
                 try {
                     $user = JWTAuth::parseToken()->authenticate();
-                    var_dump($user);
                     // Return the users as JSON response
                     return ['status'=>'success','user'=>$user];
                                 

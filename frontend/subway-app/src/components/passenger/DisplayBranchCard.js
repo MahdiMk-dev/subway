@@ -19,7 +19,7 @@ function DisplayBranchCard({ destination, time, price, imgurl }) {
           <button className="button">Buy ticket</button>
           <input
             type="number"
-            className="button"
+            className="amount"
             placeholder="ticket amount"
           />
         </div>
