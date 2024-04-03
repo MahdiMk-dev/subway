@@ -1,7 +1,6 @@
 import "../../styles/utilities.css";
 import "../../styles/home.css";
 import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
 import DisplayBranch from "./DisplayBranch";
 import DisplayBranchCard from "./DisplayBranchCard";
 import { useEffect, useState } from "react";

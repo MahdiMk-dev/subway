@@ -1,6 +1,10 @@
 import "./styles/App.css";
-import Home from "./components/admin/Home";
+import "./styles/index.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+
+import Home from "./components/admin/Home";
 import UserList from "./components/admin/UserList";
 import TripsList from "./components/admin/TripsList";
 import User from "./components/admin/User";
@@ -17,11 +21,11 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
+
 import Profile from "./components/passenger/Profile";
 import TripReview from "./components/passenger/TripReview";
 import Landing from "./components/passenger/Landing";
-import React from "react";
-import "./styles/index.css";
+import MaP from "./components/passenger/Map";
 
 function App() {
   return (
@@ -48,6 +52,7 @@ function App() {
         <Route path="/reviews" element={<FeedbacksList />} />
         <Route path="/messages" element={<MessagesList />} />
         <Route path="/newmessage" element={<NewMessage />} />
+        <Route path="/Map" element={<MaP />} />
       </Routes>
     </Router>
   );

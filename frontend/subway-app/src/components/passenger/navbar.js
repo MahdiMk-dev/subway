@@ -7,7 +7,7 @@ function Navbar() {
       <header >
         <nav className="passenger">
           <Link to="/"> Home</Link>
-          <Link to="/Branches">Branches</Link>
+          <Link to="/Map">View Map</Link>
           <Link to="/Login">Login</Link>
         </nav>
       </header>

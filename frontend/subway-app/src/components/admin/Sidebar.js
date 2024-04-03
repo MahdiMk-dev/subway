@@ -22,7 +22,7 @@ function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
+            <Link to="/admin" className="link">
             <li className="sidebarListItem active">
               <LineStyle className="sidebarIcon" />
               Home
