@@ -9,6 +9,7 @@ function Navbar() {
           <Link to="/"> Home</Link>
           <Link to="/Map">View Map</Link>
           <Link to="/Login">Login</Link>
+          <Link to="/Profile">Profile</Link>
         </nav>
       </header>
     </div>

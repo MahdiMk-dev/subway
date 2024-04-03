@@ -1,15 +1,18 @@
-.button{
+.display-btns .button{
     border-radius: 8px;
-    background-color: white;
+    background-color: #FAD273;
     border-color: transparent;
     width: fit-content;
     margin-bottom: 10px;
 }
-.button:hover{
+.displayBranch .ticketsCount{
+max-width: 50px;
+}
+.Landing .button:hover{ 
     cursor: pointer;
     filter: brightness(50%);
 }
-.seacrh{
+.Landing .seacrh{
     border-radius: 0px 8px 8px 0px;
     background-color: #FAD273;
     border-color: transparent;
@@ -57,10 +60,25 @@
     padding: 10px;    
     text-align: center;
 }
+.display-card .button{
+
+    background-color: #0B6C88;
+    color: white;
+
+}
+.display-card .amount{
+
+    background-color: #FAD273;
+    opacity: 50%    ;
+    color: white;
+    max-width: 50px;
+    max-height: 25px;
+
+}
 .displayBranch{
-    background-color: rgb(0, 0, 0,30%) ;    
+    background-color: #0B6C88 ;    
     border-radius: 15px;    
-    color:white;
+    color:#FAD273;
     padding: 10px;
 }
 .display-header{

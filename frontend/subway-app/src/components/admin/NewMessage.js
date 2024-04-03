@@ -1,8 +1,78 @@
 import '../../styles/admin/newUser.css'
 import Topbar from './Topbar';
 import Sidebar from './Sidebar';
+import { useState, useEffect } from "react";
+
 
 function NewMessage() {
+
+  const [passengers, setpassenger] = useState([]);
+  const [formData, setFormData] = useState({
+    passenger_id: '',
+    content: '',
+  });
+
+  useEffect(() => {
+    const fetchStations = async () => {
+      try {
+        const token = localStorage.getItem('admintoken');
+        const response = await fetch('http://localhost:8000/api/messagepassenger/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await response.json();
+
+        if (data.status === 'success') {
+          console.log(data.passenger)
+          setpassenger(data.passenger);
+
+        } else {
+          alert(data.message);
+          window.location.href = "/admin_login";
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchStations();
+  }, []);
+
+  const handleChange = (e) => {
+
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+    console.log(formData)
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem('admintoken');
+      const response = await fetch('http://localhost:8000/api/create_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.status === 'success') {
+        alert('created successfully');
+        window.location.href = '/admin';
+      } else {
+        alert(data.message);
+        window.location.href = '/admin_login';
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }; 
+
   return (
     <div>
     <Topbar />
@@ -10,19 +80,24 @@ function NewMessage() {
         <Sidebar />
     <div className="newUser">
       <h1 className="newUserTitle">New Message</h1>
-         <form className="productForm">
+         <form className="productForm" onSubmit={handleSubmit}>
               <div className="productFormLeft">
                  <label>Passenger</label>
-                  <select name="passenger" id="name" >
-                      <option value="mahsi">Mahdi</option>
-                      <option value="test">tets</option>
+                  <select name="passenger_id" id="passenger_id" onChange={handleChange} required  >
+                  <option value="">Select Passenger</option>
+                     {passengers.map((passenger) => (
+                  <option key={passenger.passenger.id} value={passenger.passenger.id}>
+                    {passenger.passenger.first_name}
+                  </option>
+                ))}
                   </select>
                   <label>Message</label>
                   <textarea
-                    id="message"
+                    id="content"
                     placeholder="Message"
+                    onChange={handleChange} required 
                   />
-              <button className="addProductButton">Create</button>
+              <button className="productButton">Create</button>
               </div>
 
 

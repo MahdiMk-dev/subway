@@ -15,7 +15,14 @@ import {
   Report,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
 function Sidebar() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const userType = localStorage.getItem('usertype');
+    setIsAdmin(userType === 'admin');
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -33,24 +40,28 @@ function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
+           {isAdmin && (
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Users
               </li>
             </Link>
+            )}
             <Link to="/stations" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Stations
               </li>
             </Link>
+            {isAdmin && (
             <Link to="/coins_requests" className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Coins Requests
             </li>
             </Link>
+            )}
              <Link to="/trips" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
