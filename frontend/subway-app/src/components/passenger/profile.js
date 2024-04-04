@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import {useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/profile.css';
 import profileImage from '../../images/profile2.png'; 
@@ -65,6 +65,49 @@ function Profile() {
     { field: "departure_time", headerName: "Departure Time", width: 120 },
     { field: "arrival_time", headerName: "Arrival Time", width: 120 },
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const token = localStorage.getItem('admintoken');
+            console.log(token)
+            const response = await fetch('http://localhost:8000/api/show', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+
+            const data = await response.json();
+            console.log(data)
+            if (data.status === 'success') {
+                console.log(data.trips)
+                if (data.trips.length>0) {
+                    const transformedTrips = data.trips.map(trip => ({
+        id: trip.id,
+        origin_station: trip.origin_station.name,
+        destination_station: trip.destination_station.name,
+        price: trip.price,
+        status: trip.status,
+        departure_time: trip.departure_time,
+        arrival_time: trip.arrival_time,
+      }));
+                    setData(transformedTrips);
+                }
+            }
+             else {
+                alert(data.message);
+                window.location.href = '/admin_login';
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    fetchData();
+}, []);
 
 
   return (
@@ -213,5 +256,4 @@ function Profile() {
 
   );
 }
-
 export default Profile;

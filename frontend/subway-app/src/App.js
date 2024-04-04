@@ -20,7 +20,7 @@ import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
 import Profile from "./components/passenger/Profile";
 import Login from "./components/passenger/Login";
-
+import MapRides from "./components/passenger/MapRides";
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
 import Register from './components/passenger/Register';
@@ -46,7 +46,7 @@ function App() {
           <Route path="/station/:stationId" element={<Station />} />
           <Route path="/admin_login" element={<AdminLogin />} />
           <Route path="/login" element={<Login />} />
-
+          <Route path="/map" element={<MapRides />} />
           <Route path="/coins_requests" element={<CoinsRequests />} />
           <Route path="/newUser" element={<NewUser />} />
            <Route path="/newstation" element={<NewStation />} />

@@ -31,7 +31,10 @@ function NewUser() {
         const data = await response.json();
         if (data.status === 'success') {
           setStations(data.stations);
-        } else {
+        }
+
+        
+        else {
           alert(data.message);
           window.location.href = "/admin_login";
         }
@@ -64,7 +67,12 @@ function NewUser() {
       if (data.status === 'success') {
         alert('created successfully');
         window.location.href = '/admin';
-      } else {
+      }
+      else if(data.status === 'duplicate') {
+        alert(data.message);
+        window.location.href = "/users";
+      }
+       else {
         alert(data.message);
         window.location.href = '/admin_login';
       }
@@ -80,7 +88,7 @@ function NewUser() {
         <Sidebar />
         <div className="newUser">
           <h1 className="newUserTitle">New User</h1>
-          <form className="userUpdateForm" onSubmit={handleSubmit}>
+          <form className="newUserForm" onSubmit={handleSubmit}>
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Name</label>
@@ -155,7 +163,7 @@ function NewUser() {
                   ))}
                 </select>
               </div>
-              <button type="submit" className="addProductButton">Create</button>
+              <button type="submit" className="newUserButton">Create</button>
             </div>
           </form>
         </div>

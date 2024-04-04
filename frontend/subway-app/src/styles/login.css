@@ -30,7 +30,7 @@ html {
   padding: 1rem 0.5rem;
 }
 
-section {
+.Passengerlogin section {
     border-radius: 20px;
   width: 100%;
   max-width: 420px;
@@ -45,7 +45,7 @@ section {
   z-index: 10rem;
 }
 
-form {
+.Passengerlogin form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -53,33 +53,33 @@ form {
     padding-bottom: 1rem;
 }
 
-a, a:visited {
+.Passengerlogin a, a:visited {
     color: #fff;
 }
 
-input[type="email"],
-input[type="text"],
-input[type="password"],
-select,
-button,
-textarea {
+.Passengerlogin input[type="email"],
+.Passengerlogin input[type="text"],
+.Passengerlogin input[type="password"],
+.Passengerlogin select,
+.Passengerlogin button,
+.Passengerlogin textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
 
-label,  
-button {
+.Passengerlogin label,  
+.Passengerlogin button {
   margin-top: 1rem;
 }
 
-button {
+.Passengerlogin button {
   padding: 0.5rem;
   background-color: rgb(250, 210, 115);
 }
 
-li {
+.Passengerlogin li {
     list-style-type: none;
 }
 

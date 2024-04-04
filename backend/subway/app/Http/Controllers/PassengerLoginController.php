@@ -23,7 +23,7 @@ class PassengerLoginController extends Controller
          $passenger = passenger::where('email', $request->email)->first();
 
         if (!$passenger) {
-             return response()->json(['message' => 'Invalid Email','status'=>'fail'], 401);
+             return response()->json(['message' => 'Invalid Email','status'=>'duplicate'], 401);
         }
 
         if (!password_verify($request->password, $passenger->password)) {

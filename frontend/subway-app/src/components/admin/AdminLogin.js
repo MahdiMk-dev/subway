@@ -54,7 +54,7 @@ function AdminLogin() {
             <input type="password" placeholder="Password" id="password" required/>
           </p>
           <p>
-            <input type="submit" value="Sing In" />
+            <input type="submit" value="Sign In" />
           </p>
           <p>
             <a href="">Forget Password?</a>

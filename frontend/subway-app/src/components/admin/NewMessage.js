@@ -72,6 +72,12 @@ function NewMessage() {
       console.error('Error:', error);
     }
   }; 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const userType = localStorage.getItem('usertype');
+    setIsAdmin(userType === 'admin');
+  }, []);
 
   return (
     <div>
@@ -84,12 +90,28 @@ function NewMessage() {
               <div className="productFormLeft">
                  <label>Passenger</label>
                   <select name="passenger_id" id="passenger_id" onChange={handleChange} required  >
+                 
                   <option value="">Select Passenger</option>
-                     {passengers.map((passenger) => (
-                  <option key={passenger.passenger.id} value={passenger.passenger.id}>
-                    {passenger.passenger.first_name}
-                  </option>
-                ))}
+                  {isAdmin && (
+  <>
+    {passengers.map(passenger => (
+      <option key={passenger.id} value={passenger.id}>
+        {passenger.first_name}
+      </option>
+    ))}
+  </>
+)}
+
+{!isAdmin && (
+  <>
+    {passengers.map(passenger => (
+      <option key={passenger.id} value={passenger.id}>
+        {passenger.first_name}
+      </option>
+    ))}
+  </>
+)}
+
                   </select>
                   <label>Message</label>
                   <textarea

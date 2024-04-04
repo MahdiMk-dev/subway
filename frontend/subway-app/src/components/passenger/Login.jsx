@@ -27,33 +27,32 @@ const Login = () => {
         setErrMsg('');
     }, [email, password]);
 
+    const LOGIN_URL = 'http://localhost:8000/api/login'; // Update this with your actual API URL
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try {
             const response = await axios.post(LOGIN_URL, {
                 email,
-                password,
-                userType
+                password
             });
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setEmail('');
-            setPassword('');
-            navigate(from, { replace: true });
+    
+            const { token, passenger } = response.data;
+    
+            localStorage.setItem('token', token);
+            
+            navigate('/profile');
         } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Email or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+            if (err.response && err.response.status === 401) {
+                setErrMsg('Invalid email or password');
             } else {
-                setErrMsg('Login Failed');
+                setErrMsg('An error occurred. Please try again later.');
             }
-            errRef.current.focus();
         }
     };
+    
+
 
     return (
         <div  className="Passengerlogin">

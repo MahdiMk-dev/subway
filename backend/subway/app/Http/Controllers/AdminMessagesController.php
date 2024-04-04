@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\message;
 use App\Models\ticket;
+use App\Models\passenger;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Str;;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -59,6 +60,9 @@ class AdminMessagesController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
 
     }
         public function create_message(Request $request){
@@ -95,6 +99,9 @@ class AdminMessagesController extends Controller
 
 }
 }
+else {
+    return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+}
 } 
 
       public function getmessagepassenger(Request $request){
@@ -118,13 +125,10 @@ class AdminMessagesController extends Controller
                     if($user){
                       
                         if($user["type"]=='admin'){
-                             $distinctMessages =  Message::select('passenger_id') ->with(['passenger'])
-    ->groupBy('passenger_id')
-    ->get();
+                             $distinctMessages =  passenger::all();
 
                     // Return the users as JSON response
-                    return ['status'=>'success','passenger'=>$distinctMessages];
-                                }
+                    return ['status' => 'success', 'passenger' => $distinctMessages];          }
                     else{
                        
                  /*  $distinctMessages = Message::select('passenger_id') // 
@@ -146,5 +150,8 @@ class AdminMessagesController extends Controller
 
 
 }
-}}}
+}}
+else {
+    return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+}}
 }

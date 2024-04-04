@@ -58,6 +58,10 @@ class AdminCoinRequestsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
+
 
     }
 
@@ -107,6 +111,9 @@ class AdminCoinRequestsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
 
     }
         public function rejectrequest (Request $request,$id){
@@ -147,6 +154,9 @@ class AdminCoinRequestsController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
 
     }
