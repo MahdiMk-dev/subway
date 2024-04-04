@@ -18,7 +18,7 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
-import Profile from "./components/passenger/Profile";
+import Profile from "./components/passenger/profile";
 import Login from "./components/passenger/Login";
 
 import Landing from "./components/passenger/Landing";
@@ -32,7 +32,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Landing/>} />
           <Route path="/admin" element={<Home />} />
