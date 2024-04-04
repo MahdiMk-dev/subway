@@ -30,8 +30,6 @@ const Login = () => {
     setErrMsg("");
   }, [email, password]);
 
-    const LOGIN_URL = 'http://localhost:8000/api/login'; // Update this with your actual API URL
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -74,7 +72,7 @@ const Login = () => {
 
   return (
     <div>
-
+      <Navbar />
       <div className="Passengerlogin">
         <section>
           <p
