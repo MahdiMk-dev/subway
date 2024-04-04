@@ -27,18 +27,15 @@ import Login from "./components/passenger/Login";
 import MapRides from "./components/passenger/MapRides";
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
-import Landing from "./components/passenger/Landing";
 import MaP from "./components/passenger/Map";
 import Register from './components/passenger/Register';
 
-import React from 'react';
-import './styles/index.css';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/profile/:userId" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Landing/>} />
           <Route path="/admin" element={<Home />} />
