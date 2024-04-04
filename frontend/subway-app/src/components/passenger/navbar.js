@@ -3,22 +3,37 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const id = localStorage.getItem("ID")
-  const [isLogin, Setlogin] = useState(false)
-  useEffect(()=>{
-    const login = localStorage.getItem("login")
-    if(login != null){
-      Setlogin(true)
+  const id = localStorage.getItem("ID");
+  const [isLogin, Setlogin] = useState(false);
+  useEffect(() => {
+    const login = localStorage.getItem("login");
+    if (login != null) {
+      Setlogin(true);
     }
-  },[])
+  }, []);
   return (
-    <div >
-      <header >
+    <div>
+      <header>
         <nav className="passenger">
           <Link to="/"> Home</Link>
           <Link to="/Map">View Map</Link>
-          {isLogin ? (<Link to={"/profile/userId:"+id}>Profile</Link>):
-          (<Link to="/Login">Login</Link>)}
+          <Link to="/Passes">Buy Tickets</Link>
+          {isLogin ? (
+            <>
+              <Link to={"/profile/userId:" + id}>Profile</Link>{" "}
+              <Link
+                to="/"
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+              >
+                Logout
+              </Link>
+            </>
+          ) : (
+            <Link to="/Login">Login</Link>
+          )}
         </nav>
       </header>
     </div>

@@ -3,13 +3,13 @@ import "../../styles/home.css";
 import { useState } from "react";
 import axios from "axios";
 import dateFormat, { masks } from "dateformat";
+import { useNavigate } from "react-router-dom";
 
 function DisplayBranchCard({ destination, time, price, imgurl }) {
+  const navigate = useNavigate()
   const [amount,SetAmount] = useState(0)
   const buyTicket = () =>{
-    axios.post("//localhost:8000/api/buytickets",amount).then((respone)=>{
-      console.log(respone.message)
-    })
+    navigate("/Passes",{tickets:destination,quantity:amount})
   }
   return (
     <div className="display-card float space-even">

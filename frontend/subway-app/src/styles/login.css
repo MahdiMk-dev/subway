@@ -46,14 +46,19 @@ section {
   z-index: 10rem;
 }
 
-form {
+.login-inputs {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   width: min-content;
   align-self: center;
 }
-
+.form-inputs {
+  display: flex;
+  flex-grow: 1;
+  width: min-content;
+  align-self: center;
+}
 a,
 a:visited {
   color: #fff;

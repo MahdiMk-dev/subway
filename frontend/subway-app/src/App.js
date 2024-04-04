@@ -30,6 +30,7 @@ import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
 import MaP from "./components/passenger/Map";
 import Register from "./components/passenger/Register";
+import Passes from "./components/passenger/Passes";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/tripreview/:tripId" element={<TripReview />} />
         <Route path="/" element={<Landing />} />
+        <Route path="/Passes" element={<Passes />}/>
         <Route path="/admin" element={<Home />} />
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/users" element={<UserList />} />

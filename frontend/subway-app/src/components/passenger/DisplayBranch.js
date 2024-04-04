@@ -7,9 +7,7 @@ import dateFormat, { masks } from "dateformat";
 function DisplayBranch({ origin, destination, time, price }) {
   const [amount,SetAmount] = useState(0)
   const buyTicket = () =>{
-    axios.post("//localhost:8000/api/buytickets",amount).then((respone)=>{
-      console.log(respone.message)
-    })
+    navigate("/Passes",{tickets:destination,quantity:amount})
   }
   return (
     <div className="displayBranch">

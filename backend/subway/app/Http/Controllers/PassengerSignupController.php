@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\passenger;
 use App\Models\station;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,15 +14,13 @@ class PassengerSignupController extends Controller
     public function signup(Request $request)
     {
         // Create a new passenger instance
-        $stationID = station::select("id")->where("city","=",$request->city)->get();
-        $passenger = new User();
+        $passenger = new passenger();
         $passenger->email = $request->email;
-        $passenger->name = $request->name;
+        $passenger->first_name = $request->first_name;
+        $passenger->last_name = $request->last_name;
         $passenger->phone_number = $request->phone_number;
-        $passenger->station_id = $stationID->value("id");
-        $passenger->type = $request->userType;
-        $passenger->status = $request->status;
-
+        $passenger->city = $request->city;
+        $passenger->dob = $request->dob;
 
         
         $passenger->password = Hash::make($request->password);
