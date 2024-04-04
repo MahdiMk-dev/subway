@@ -12,6 +12,8 @@ use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreated;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class AdminUserController extends Controller
 {
@@ -74,9 +76,18 @@ class AdminUserController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
     }
     public function create_user(Request $request){
         // Validate the incoming request data
+        $email = user::where('email', $request->email)->first();
+
+        if ($email) {
+             return response()->json(['message' => 'already exists Email','status'=>'duplicate'], 401);
+        }   
+        else{
              if ($request->header('Authorization')) {
             // Extract the token from the Authorization header
             $token = $request->header('Authorization');
@@ -93,6 +104,13 @@ class AdminUserController extends Controller
                     $user = JWTAuth::parseToken()->authenticate();
                     
                     if($user){
+                        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
+
+                        // Shuffle the characters to make the password more random
+                        $shuffledChars = str_shuffle($chars);
+
+                        // Get a substring of the shuffled characters with the desired length
+                        $password = substr($shuffledChars, 0, 8);
                     $newuser = new User();
                     $newuser->name = $request->name;
                     $newuser->email = $request->email;
@@ -101,26 +119,55 @@ class AdminUserController extends Controller
                       $newuser->image_url='';
                        $newuser->type = $request->type;
                         $newuser->station_id = intval($request->station_id);
-                        $newuser->password =  Hash::make($request->password);
+                        $newuser->password =  Hash::make($password);
                     // Set other attributes as needed
                       //  var_dump($newuser);
                     // Save the user to the database
-                    try {
-    $newuser->save();
-    //$userName=$newuser->email;
-    //$password=$request->password;
-    //Mail::to($newuser->email)->send(new UserCreated($userName,$password));
-} catch (\Exception $e) {
-    // Log the error or handle it in some other way
-    echo "Error: " . $e->getMessage();
-    return response()->json(['status' => 'Error', 'message'=>'User not created']);
+                 
+
+    //
+
+    $userName=$newuser->email;
+
+    $reveiverEmailAddress = $newuser->email;
+
+$mail = new PHPMailer(true);
+try {        $newuser->save();
+   
+            /* Email SMTP Settings */
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = env('MAIL_HOST');
+            $mail->SMTPAuth = true;
+            $mail->Username = env('MAIL_USERNAME');
+            $mail->Password = env('MAIL_PASSWORD');
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+            $mail->Port = env('MAIL_PORT');
+   
+            $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            $mail->addAddress($newuser->email);
+   
+            $mail->isHTML(true);
+   
+            $mail->Subject = "Branch User Created Email";
+                     $content = "<h1>Welcome to Our Platform</h1>";
+        $content .= "<p>Thank you for joining us! Below is your username and password:</p>";
+        $content .= "<p><strong>Username:</strong> ".$userName."</p>";
+        $content .= "<p><strong>Password:</strong> ".$password."</p>";
+            $mail->Body    = $content;
+   
+            if( !$mail->send() ) {
+                return response()->json(['status'=>'fail', 'message'=>'failed to create user']);
+            }
+              
+            else {
+               return response()->json(['status'=>'success', 'user'=>$newuser]);
+            }
+   
+        } catch (Exception $e) {
+             return response()->json(['status'=>'fail', 'message'=>'failed to create user']);
+        }
 }
-
-
-                    
-
-                    return response()->json(['status' => 'success', 'user' => $newuser]);
-                    }
                     else{
                      return response()->json(['status'=>'fail', 'message'=>'User Token']);   
                     }
@@ -137,6 +184,10 @@ class AdminUserController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
+    }
     }
     public function getuser(Request $request, $id)
     {
@@ -183,6 +234,9 @@ class AdminUserController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
     }
     public function delete_user($id)

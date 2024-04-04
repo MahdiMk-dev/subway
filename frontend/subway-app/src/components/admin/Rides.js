@@ -91,7 +91,7 @@ const [data, setData] = useState({});
   return (
     <div>
     <Topbar />
-      <div className="container">
+      <div className="admincontainer">
         <Sidebar />
     <div className="product">
       <div className="productTitleContainer">

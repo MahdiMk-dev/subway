@@ -20,12 +20,12 @@ function Navbar() {
           <Link to="/Passes">Buy Passes</Link>
           {isLogin ? (
             <>
-              <Link to={"/profile/userId:" + id}>Profile</Link>{" "}
+              <Link to={"/profile/"}>Profile</Link>{" "}
               <Link
                 to="/"
                 onClick={() => {
                   localStorage.clear();
-                  window.location.reload();
+                  window.location.href="/login";
                 }}
               >
                 Logout

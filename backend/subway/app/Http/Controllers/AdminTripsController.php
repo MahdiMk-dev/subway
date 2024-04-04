@@ -60,6 +60,9 @@ class AdminTripsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
 
     }
 
@@ -126,6 +129,9 @@ class AdminTripsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
     }
     public function create_trip(Request $request){
         // Validate the incoming request data
@@ -181,6 +187,9 @@ class AdminTripsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
     }
     public function gettrip(Request $request, $id)
     {
@@ -224,6 +233,9 @@ class AdminTripsController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
     }
     public function delete_trip($id)

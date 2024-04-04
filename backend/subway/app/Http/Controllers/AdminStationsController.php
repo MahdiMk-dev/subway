@@ -39,7 +39,7 @@ class AdminStationsController extends Controller
                              $stations = station::all();
 
                     // Return the users as JSON response
-                    return ['status'=>'success','stations'=>$stations];
+                    return ['status'=>'success','stations'=>$stations,"allstations"=>$stations];
                                 }
                     else{
                       $stations = Station::where('id', $user["station_id"])->get();
@@ -59,6 +59,9 @@ class AdminStationsController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
 
     }
@@ -125,6 +128,9 @@ class AdminStationsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
     }
     public function create_station(Request $request){
         // Validate the incoming request data
@@ -181,6 +187,9 @@ class AdminStationsController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
     }
     public function getstation(Request $request, $id)
     {
@@ -222,6 +231,9 @@ class AdminStationsController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
     }
     public function delete_station($id)

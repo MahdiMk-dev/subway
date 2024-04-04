@@ -49,7 +49,7 @@ function NewStation() {
   return (
     <div>
       <Topbar />
-      <div className="container">
+      <div className="admincontainer">
         <Sidebar />
         <div className="newUser">
           <h1 className="newUserTitle">New Station</h1>

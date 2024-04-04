@@ -22,7 +22,9 @@ html {
   filter:blur(100%) ;
 }
 
+
 .App {
+    
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +33,7 @@ html {
   padding: 1rem 0.5rem;
 }
 
-section {
+.Passengerlogin section {
   border-radius: 20px;
   color: white;
   text-align: center;
@@ -46,21 +48,21 @@ section {
   z-index: 10rem;
 }
 
-.login-inputs {
+.Passengerlogin .login-inputs {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   width: min-content;
   align-self: center;
 }
-.form-inputs {
+.Passengerlogin .form-inputs {
   display: flex;
   flex-grow: 1;
   width: min-content;
   align-self: center;
 }
-a,
-a:visited {
+.Passengerlogin a,
+.Passengerlogin a:visited {
   color: #fff;
 }
 
@@ -87,13 +89,13 @@ button {
   margin-top: 1rem;
 }
 
-button {
+.Passengerlogin button {
   padding: 0.5rem;
   background-color: rgb(250, 210, 115);
 }
 
-li {
-  list-style-type: none;
+.Passengerlogin li {
+    list-style-type: none;
 }
 
 .instructions {

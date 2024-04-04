@@ -55,6 +55,9 @@ class AdminRidesController extends Controller
                 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
 
     }
 
@@ -146,12 +149,12 @@ class AdminRidesController extends Controller
                     $newride->duration = floatval($request->duration);
                     $newride->distance = floatval($request->distance);
                     try {
-    $newride->save();
-} catch (\Exception $e) {
-    // Log the error or handle it in some other way
-    echo "Error: " . $e->getMessage();
-    return response()->json(['status' => 'Error', 'message'=>'ride not created']);
-}
+                        $newride->save();
+                    } catch (\Exception $e) {
+                        // Log the error or handle it in some other way
+                        echo "Error: " . $e->getMessage();
+                        return response()->json(['status' => 'Error', 'message'=>'ride not created']);
+                    }
 
 
                     
@@ -173,6 +176,9 @@ class AdminRidesController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
     }
     public function getride(Request $request, $id)
@@ -217,6 +223,9 @@ class AdminRidesController extends Controller
                         return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
                 }
             }
+        }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
         }
     }
     public function delete_ride($id)

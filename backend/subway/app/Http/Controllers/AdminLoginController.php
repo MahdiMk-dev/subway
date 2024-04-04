@@ -76,6 +76,9 @@ class AdminLoginController extends Controller
 }
             }
         }
+        else {
+            return response()->json(['status'=>'fail','message' => 'no token found'], 401);
+        }
 
     }
 }

@@ -22,13 +22,12 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
-
-import Profile from "./components/passenger/Profile";
+import Profile from "./components/passenger/profile";
 import Login from "./components/passenger/Login";
-
+import MapRides from "./components/passenger/MapRides";
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
-import MaP from "./components/passenger/Map";
+import Map from "./components/passenger/Map";
 import Register from "./components/passenger/Register";
 import Passes from "./components/passenger/Passes";
 
@@ -36,32 +35,35 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/tripreview/:tripId" element={<TripReview />} />
-        <Route path="/" element={<Landing />} />
-        <Route path="/Passes" element={<Passes />}/>
-        <Route path="/admin" element={<Home />} />
-        <Route path="/profile/:userId" element={<Profile />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/stations" element={<StationsList />} />
-        <Route path="/rides" element={<RidesList />} />
-        <Route path="/user/:userId" element={<User />} />
-        <Route path="/trip/:tripId" element={<Trips />} />
-        <Route path="/ride/:rideId" element={<Rides />} />
-        <Route path="/station/:stationId" element={<Station />} />
-        <Route path="/coins_requests" element={<CoinsRequests />} />
-        <Route path="/newUser" element={<NewUser />} />
-        <Route path="/newstation" element={<NewStation />} />
-        <Route path="/newtrip" element={<NewTrip />} />
-        <Route path="/newride" element={<NewRide />} />
-        <Route path="/trips" element={<TripsList />} />
-        <Route path="/reviews" element={<FeedbacksList />} />
-        <Route path="/messages" element={<MessagesList />} />
-        <Route path="/newmessage" element={<NewMessage />} />
-        <Route path="/Map" element={<MaP />} />
-        <Route path="/admin_login" element={<AdminLogin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+        <Route path="/profile" element={<Profile />} />
+          <Route path="/tripreview/:tripId" element={<TripReview />} />
+          <Route path="/" element={<Landing/>} />
+          <Route path="/admin" element={<Home />} />
+
+          <Route path="/users" element={<UserList />} />
+          <Route path="/stations" element={<StationsList />} />
+           <Route path="/rides" element={<RidesList />} />
+          <Route path="/user/:userId" element={<User />} />
+          <Route path="/trip/:tripId" element={<Trips />} />
+          <Route path="/ride/:rideId" element={<Rides />} />
+          <Route path="/station/:stationId" element={<Station />} />
+          <Route path="/admin_login" element={<AdminLogin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/coins_requests" element={<CoinsRequests />} />
+          <Route path="/newUser" element={<NewUser />} />
+           <Route path="/newstation" element={<NewStation />} />
+          <Route path="/newtrip" element={<NewTrip />} />
+          <Route path="/newride" element={<NewRide />} />
+          <Route path="/trips" element={<TripsList />} />
+
+          <Route path="/reviews" element={<FeedbacksList />} />
+          <Route path="/messages" element={<MessagesList />} />
+          <Route path="/newmessage" element={<NewMessage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+  
+        </Routes>
     </Router>
   );
 }
