@@ -176,4 +176,36 @@ try{
            return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
    }
 }
+public function editinfo(Request $request)
+{
+try{
+    // Extract the passenger ID from the JWT token payload
+    $token = JWTAuth::parseToken();
+    $passengerId = $token->getPayload()->get('sub');
+
+    // Create a new coin request instance
+    $passenger = Passenger::findOrFail($passengerId);
+    $passenger->first_name = $$request->first_name;
+    $passenger->last_name = $request->last_name;
+    $passenger->city = $request->city;
+    $passenger->phone_number = $request->phone_number;
+    $passenger->dob = $request->dob;
+    $passenger->save();
+
+    // Return success response
+    return response()->json([
+        'status'=>'success',
+        'message' => 'updated successfully',
+    ], 201);
+}catch (TokenExpiredException $e) {
+            
+    return response()->json(['status'=>'fail','message' => 'token_expired'], 401);
+} catch (TokenInvalidException $e) {
+       // Token is invalid
+       return response()->json(['status'=>'fail','message' => 'token_invalid'], 401);
+} catch (\Exception $e) {
+       // Other exceptions
+       return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
+}
+}
 }

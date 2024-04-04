@@ -8,6 +8,7 @@ import Navbar from './navbar';// import the image
 
 function Profile() {
   const [info, setinfo] = useState([]);
+  const [infoedit, seteditinfo] = useState([]);
   const [trips, settrips] = useState([]);
   const [previous, setprev] = useState([]);
   const [messages, setmessage] = useState([]);
@@ -20,9 +21,51 @@ function Profile() {
    const [showProfile, setProfile] = useState(true);
    const [EditProfile, setEditProfile] = useState(false);
    const [showmessages, setshowmessages] = useState(false);
-  
-
-
+   const handleChange = (e) => {
+    const { id, value } = e.target;
+    seteditinfo(prevState => ({ ...prevState, [id]: value }));
+  };
+   
+   const handleeditInfo = async (e) => {
+    e.preventDefault();
+    const first_name = document.getElementById('first_name').value;
+    const city = document.getElementById('city').value;
+    const dob = document.getElementById('dob').value;
+    const phone_number = document.getElementById('phone_number').value;
+    const last_name = document.getElementById('last_name').value;
+    const formData = {
+            first_name:first_name,
+            last_name:last_name,
+            dob:dob,
+            city:city,
+            phone_number:phone_number
+    }
+   
+    try {
+      const token = localStorage.getItem('token');
+      console.log(token)
+      const response = await fetch('http://localhost:8000/api/editinfo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if(data.status=='success'){
+        alert('updated successfully')
+        window.location.href='/profile'
+      }
+      else{
+        alert(data.message)
+         window.location.href="/login"
+      }
+      console.log(data); // Handle the response data here
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }; 
    const handleSubmitRequest = async (e) => {
     e.preventDefault();
     const amount = document.getElementById('amount').value;
@@ -70,9 +113,7 @@ function Profile() {
     setProfile(menuItem === 'profile');
     setEditProfile(menuItem === 'editprofile');
   };
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+
   console.log(data)
   const columns = [
     { field: "id", headerName: "ID", width: 90, hide: true },
@@ -138,7 +179,13 @@ function Profile() {
             if (data.status === 'success') {
               setinfo(data.passenger)
               
-
+              seteditinfo({
+                first_name: data.passenger.first_name,
+                last_name: data.passenger.last_name,
+                dob: data.passenger.dob,
+                city: data.passenger.city,
+                phone_number: data.passenger.phone_number
+              });
 
 
                 const transformedTrips = data.trips.map(trip => ({
@@ -363,22 +410,51 @@ function Profile() {
          <h2>Edit Profile</h2>
           <div className="form-card">
       
-            <form className="coinsForm">
+            <form className="coinsForm" onSubmit={handleeditInfo}>
               <div className="coinsFormLeft">
-                 <label>Name</label>
+                 <label>First Name</label>
                   <input
                     type="text"
-                    id="name"
-                    placeholder="Name"
+                    id="first_name"
+                    value={info.first_name}
+                    required
+                    onChange={handleChange}
                   />
-                  <label>Email</label>
+                   <label>Name</label>
                   <input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
+                    type="text"
+                    id="last_name"
+                    value={info.last_name}
+                    required
+                    onChange={handleChange}
+                  />
+                  <label>City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    value={info.city}
+                    placeholder="city"
+                    required
+                    onChange={handleChange}
+                  />
+                  <label>Date of Birth</label>
+                  <input
+                    type="date"
+                    id="dob"
+                    value={info.dob}
+                    required
+                    onChange={handleChange}
+                  />
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    value={info.phone_number}
+                    id="phone_number"
+                    required
+                    onChange={handleChange}
                   />
                   
-                  <button className="requestButton">Update</button>
+                  <button className="requestButton" >Update</button>
               </div>
               </form>
 
