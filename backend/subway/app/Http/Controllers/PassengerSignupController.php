@@ -12,7 +12,6 @@ class PassengerSignupController extends Controller
     // Handle the signup request
     public function signup(Request $request)
     {
-        // Create a new passenger instance
         $passenger = new Passenger();
         $passenger->email = $request->email;
         $passenger->first_name = $request->first_name;
@@ -20,8 +19,9 @@ class PassengerSignupController extends Controller
         $passenger->dob = $request->dob;
         $passenger->phone_number = $request->phone_number;
         $passenger->city = $request->city;
+        $passenger->image_url=$request->image_url;
         $passenger->gender = $request->gender;
-
+        $passenger->balance = $request->balance;
 
         
         $passenger->password = Hash::make($request->password);

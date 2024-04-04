@@ -16,12 +16,17 @@ html {
 .Passengerlogin {
     min-height: 100vh;
     background-image: url('../images/hero_stations.jpg');
+    
     background-size:cover;
     background-attachment: fixed; 
-    backdrop-filter: blur(5px);
+    
+    color: white;
+    
 }
 
+
 .App {
+    
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +39,7 @@ html {
     border-radius: 20px;
   width: 100%;
   max-width: 420px;
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +56,7 @@ html {
     justify-content: space-evenly;
     flex-grow: 1;
     padding-bottom: 1rem;
+    
 }
 
 .Passengerlogin a, a:visited {
@@ -60,11 +66,14 @@ html {
 .Passengerlogin input[type="email"],
 .Passengerlogin input[type="text"],
 .Passengerlogin input[type="password"],
+.Passengerlogin input[type="date"],
+.Passengerlogin input[type="tel"],
+.Passengerlogin input[type="number"],
 .Passengerlogin select,
 .Passengerlogin button,
 .Passengerlogin textarea {
   font-family: 'Nunito', sans-serif;
-  font-size: 22px;
+  font-size: 16px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }

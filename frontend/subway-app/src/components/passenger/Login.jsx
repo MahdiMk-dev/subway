@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/login.css';
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'http://localhost:8000/api/login';
 
 const Login = () => {
     const navigate = useNavigate();

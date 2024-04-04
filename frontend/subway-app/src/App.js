@@ -1,6 +1,10 @@
 import "./styles/App.css";
-import Home from "./components/admin/Home";
+import "./styles/index.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+
+import Home from "./components/admin/Home";
 import UserList from "./components/admin/UserList";
 import TripsList from "./components/admin/TripsList";
 import User from "./components/admin/User";
@@ -18,11 +22,13 @@ import NewStation from "./components/admin/NewStation";
 import NewTrip from "./components/admin/NewTrip";
 import NewRide from "./components/admin/NewRide";
 import NewMessage from "./components/admin/NewMessage";
-import Profile from "./components/passenger/Profile";
+import Profile from "./components/passenger/profile";
 import Login from "./components/passenger/Login";
 import MapRides from "./components/passenger/MapRides";
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
+import Landing from "./components/passenger/Landing";
+import MaP from "./components/passenger/Map";
 import Register from './components/passenger/Register';
 
 import React from 'react';
@@ -32,7 +38,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Landing/>} />
           <Route path="/admin" element={<Home />} />
