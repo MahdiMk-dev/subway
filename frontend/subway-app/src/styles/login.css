@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 /*
 * {
     margin: 0;
@@ -14,11 +14,12 @@ html {
 }*/
 
 .Passengerlogin {
-    min-height: 100vh;
-    background-image: url('../images/hero_stations.jpg');
-    background-size:cover;
-    background-attachment: fixed; 
-    backdrop-filter: blur(5px);
+    align-content: center;
+  min-height: 100vh;
+  background-image: url("../images/hero_stations.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(5px);
 }
 
 .App {
@@ -26,35 +27,36 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   padding: 1rem 0.5rem;
 }
 
 section {
-    border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  min-height: 100vh;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
-  background-color: rgb(11, 108, 136);    
+  background-color: rgb(11, 108, 136);
   margin-left: auto;
   margin-right: auto;
   z-index: 10rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: min-content;
+  align-self: center;
 }
 
-a, a:visited {
-    color: #fff;
+a,
+a:visited {
+  color: #fff;
 }
 
 input[type="email"],
@@ -63,13 +65,13 @@ input[type="password"],
 select,
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
 
-label,  
+label,
 button {
   margin-top: 1rem;
 }
@@ -80,57 +82,57 @@ button {
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .instructions > svg {
-    margin-right: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .line {
-    display: inline-block;
+  display: inline-block;
 }
 
 .flexGrow {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }

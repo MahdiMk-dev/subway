@@ -1,10 +1,10 @@
 import Navbar from "./navbar";
+import { useState } from "react";
 
 function MaP() {
   return (
     <div >
-      <Navbar />
-      MaP
+      <Navbar /> 
     </div>
   );
 }

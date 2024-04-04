@@ -7,6 +7,7 @@ import { tripRows } from "../../dummyData";
 import Navbar from './navbar';// import the image
 
 function Profile() {
+  
   const [data, setData] = useState([]);
    const [upcommingdata, setupcommingdata] = useState([]);
    const [showTripHistory, setShowTripHistory] = useState(false);

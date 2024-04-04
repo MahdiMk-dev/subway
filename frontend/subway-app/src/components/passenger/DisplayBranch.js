@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import dateFormat, { masks } from "dateformat";
 
-function DisplayBranch({ destination, time, price }) {
+function DisplayBranch({ origin, destination, time, price }) {
   const [amount,SetAmount] = useState(0)
   const buyTicket = () =>{
     axios.post("//localhost:8000/api/buytickets",amount).then((respone)=>{
@@ -13,7 +13,7 @@ function DisplayBranch({ destination, time, price }) {
   }
   return (
     <div className="displayBranch">
-      <div className="display-header">{destination}</div>
+        <div className="display-header float space-between gap"><div>From:{origin}</div><div>To:{destination}</div></div>
       <div className="display-body float space-between">
         <div className="float space-between gap-6">
           <div>Departure time: <br/>{dateFormat(time, "ddd, mmm dS, h:MM TT")}</div>

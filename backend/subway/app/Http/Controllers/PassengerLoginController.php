@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Passenger;
+use App\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Str;;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -20,7 +20,7 @@ class PassengerLoginController extends Controller
     // Handle the login request
     public function login(Request $request)
     {
-         $passenger = passenger::where('email', $request->email)->first();
+        $passenger = user::where('email', $request->email)->first();
 
         if (!$passenger) {
              return response()->json(['message' => 'Invalid Email','status'=>'fail'], 401);

@@ -5,6 +5,7 @@ import DisplayBranch from "./DisplayBranch";
 import DisplayBranchCard from "./DisplayBranchCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Landing() {
   const [branches, SetBranch] = useState([]);
@@ -12,11 +13,13 @@ function Landing() {
   const getAllBranches = () => {
     const arr = [];
     axios.get("//localhost:8000/api/displayTrips").then((response) => {
-      const trip = response.data.trips;
+      const trip = response.data.tripsDestination;
+      const origin = response.data.tripOrigin;
       for (let i = 0; i < trip.length; i++) {
         const branch = (
           <DisplayBranch
-            destination={trip[i].city}
+            destination={trip[i].city}            
+            origin={origin[i].city}
             time={trip[i].departure_time}
             price={trip[i].price + "$"}
           />
@@ -29,7 +32,7 @@ function Landing() {
 
   const displayBranch = () => {
     const arr = [];
-    axios.get("//localhost:8000/api/displayTrips").then((response) => {
+    axios.get("//localhost:8000/api/RecomendedTrips").then((response) => {
       const trip = response.data.trips;
       for (let i = 0; i < trip.length; i++) {
         const branch = (
@@ -93,7 +96,7 @@ function Landing() {
               </div>
             </div>
             <div>
-              <button className="seacrh">Search</button>
+              <button className="seacrh"><Link to={"/Map"}>Search</Link></button>
             </div>
           </div>
           <div className="row float space-between">

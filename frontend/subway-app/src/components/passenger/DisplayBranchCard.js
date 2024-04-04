@@ -17,7 +17,7 @@ function DisplayBranchCard({ destination, time, price, imgurl }) {
         <img src={imgurl} className="destination" />
       </div>
       <div>
-        <div className="display-header">{destination}</div>
+        <div className="display-header float"><div>{destination}</div></div>
         <div className="display-body float space-between">
           <div className="float space-between ">
           <div>Departure time: {dateFormat(time, "ddd, mmm dS, h:MM TT")}</div>

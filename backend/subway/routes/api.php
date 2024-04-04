@@ -18,6 +18,7 @@ use App\Http\Controllers\PassengerGetDataController;
 
 use App\Http\Controllers\PassengerSignupController;
 use App\Http\Controllers\DisplayTrips;
+use App\Http\Controllers\buyTickets;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +91,5 @@ Route::get('/messagepassenger/', [AdminMessagesController::class, 'getmessagepas
 Route::post('/create_message/', [AdminMessagesController::class, 'create_message']);
 
 Route::get('/displayTrips', [DisplayTrips::class, 'displayAll']);
+Route::get('/RecomendedTrips', [DisplayTrips::class, 'recomended']);
+Route::get('/buytickets', [buyTickets::class, 'buy']);

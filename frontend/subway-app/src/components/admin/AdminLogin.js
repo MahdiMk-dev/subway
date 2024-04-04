@@ -34,17 +34,17 @@ function AdminLogin() {
     }
   };
   return (
-   <div class="wrapper-admin">
-  <div class="container-admin">
-    <div class="col-left-admin">
-      <div class="login-text-admin">
+   <div className="wrapper-admin">
+  <div className="container-admin">
+    <div className="col-left-admin">
+      <div className="login-text-admin">
         <h2>Welcome Back</h2>
       </div>
     </div>
-    <div class="col-right-admin">
-      <div class="login-form-admin">
+    <div className="col-right-admin">
+      <div className="login-form-admin">
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='admin-form'>
           <p>
             <label>Username or email address<span>*</span></label>
             <input type="text" placeholder="Email" id="email" required/>
