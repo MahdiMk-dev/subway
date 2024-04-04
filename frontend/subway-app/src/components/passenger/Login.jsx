@@ -1,10 +1,12 @@
-// Login.jsx
-
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./navbar";
 import "../../styles/login.css";
+import "../../styles/utilities.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+
 const LOGIN_URL = "//localhost:8000/api/login";
 
 const Login = () => {
@@ -48,12 +50,12 @@ const Login = () => {
       );
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
-      console.log(response.data.passenger.id)
+      console.log(response.data.passenger.id);
       setEmail("");
       setPassword("");
       localStorage.setItem("login", true);
-      localStorage.setItem("userID",response.data.passenger.id)
-      navigate("/profile/userId:"+response.data.passenger.id);
+      localStorage.setItem("userID", response.data.passenger.id);
+      navigate("/profile/userId:" + response.data.passenger.id);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -82,25 +84,31 @@ const Login = () => {
           </p>
           <h1>Login</h1>
           <form onSubmit={handleSubmit} className="login-inputs">
-            <label>Email:</label>
-            <input
-              type="email"
-              id="email"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              required
-            />
-            <label>Password:</label>
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-            />
-            <label>User Type:</label>
+            <div className="float">
+              <FontAwesomeIcon icon={faEnvelope} className="icon"/>
+              <input
+                className="row"
+                type="email"
+                id="email"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+              />
+            </div>
+            <div className="float">
+              <FontAwesomeIcon icon={faLock} className="icon"/>
+              <input
+                className="row"
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+              />
+            </div>
+
             <select
               value={userType}
               onChange={(e) => setUserType(e.target.value)}
@@ -126,11 +134,12 @@ const Login = () => {
             <button type="submit">Login</button>
           </form>
           <p>
-            Need an Account?
-            <br />
-            <span className="line">
-              <Link to="/register">Sign Up</Link>
-            </span>
+            <b className="row">
+              Need an Account?
+              <span className="line">
+                <Link to="/register">Sign Up</Link>
+              </span>
+            </b>
           </p>
         </section>
       </div>

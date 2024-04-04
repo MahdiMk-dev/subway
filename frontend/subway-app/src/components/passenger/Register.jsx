@@ -3,12 +3,20 @@ import {
   faCheck,
   faTimes,
   faInfoCircle,
+  faEnvelope,
+  faUser,
+  faLock,
+  faCalendar,
+  faHome,
+  faVenusMars,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import "../../styles/login.css";
+import "../../styles/utilities.css";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "//localhost:8000/api/signup";
@@ -123,159 +131,183 @@ const Register = () => {
             </p>
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
-              <div className="form-inputs">
+              <div className="form-inputs space-between gap-2">
                 <div>
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    required
-                    aria-describedby="uidnote"
-                  />
-                  <label htmlFor="First Name">First Name:</label>
-                  <input
-                    type="text"
-                    id="First Name"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
-                    value={first_name}
-                    required
-                    aria-describedby="uidnote"
-                  />
-                  <label htmlFor="Last Name">Last Name:</label>
-                  <input
-                    type="text"
-                    id="Last Name"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setLast(e.target.value)}
-                    value={last_name}
-                    required
-                    aria-describedby="uidnote"
-                  />
-                  <label htmlFor="gender">Gender:</label>
-                  <input
-                    type="text"
-                    id="gender"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => Setgender(e.target.value)}
-                    value={gender}
-                    required
-                    aria-describedby="uidnote"
-                  />
-                  <label htmlFor="Dob">Date of Birth:</label>
-                  <input
-                    type="date"
-                    id="Dob"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => SetDOB(e.target.value)}
-                    value={dob}
-                    required
-                    aria-describedby="uidnote"
-                  />
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faEnvelope} className="icon" />
+
+                    <input
+                      type="email"
+                      id="email"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      required
+                      aria-describedby="uidnote"
+                    />
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faUser} className="icon" />
+
+                    <input
+                      type="text"
+                      id="First Name"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setUser(e.target.value)}
+                      value={first_name}
+                      required
+                      aria-describedby="uidnote"
+                    />
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faUser} className="icon" />
+
+                    <input
+                      type="text"
+                      id="Last Name"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setLast(e.target.value)}
+                      value={last_name}
+                      required
+                      aria-describedby="uidnote"
+                    />
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faVenusMars} className="icon" />
+
+                    <input
+                      type="text"
+                      id="gender"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => Setgender(e.target.value)}
+                      value={gender}
+                      required
+                      aria-describedby="uidnote"
+                    />
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faCalendar} className="icon" />
+
+                    <input
+                      type="date"
+                      id="Dob"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => SetDOB(e.target.value)}
+                      value={dob}
+                      required
+                      aria-describedby="uidnote"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="Phone Number">Phone Number:</label>
-                  <input
-                    type="text"
-                    id="Phone Number"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setPhone(e.target.value)}
-                    value={phone_number}
-                    required
-                  />
-                  <label htmlFor="City name">City name:</label>
-                  <input
-                    type="text"
-                    id="City name"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setCity(e.target.value)}
-                    value={city}
-                    required
-                  />
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faPhone} className="icon" />
 
-                  <label htmlFor="password">
-                    Password:
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className={validPwd ? "valid" : "hide"}
+                    <input
+                      type="text"
+                      id="Phone Number"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setPhone(e.target.value)}
+                      value={phone_number}
+                      required
                     />
-                    <FontAwesomeIcon
-                      icon={faTimes}
-                      className={validPwd || !password ? "hide" : "invalid"}
-                    />
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={password}
-                    required
-                    aria-invalid={validPwd ? "false" : "true"}
-                    aria-describedby="pwdnote"
-                    onFocus={() => setPwdFocus(true)}
-                    onBlur={() => setPwdFocus(false)}
-                  />
-                  <p
-                    id="pwdnote"
-                    className={
-                      pwdFocus && !validPwd ? "instructions" : "offscreen"
-                    }
-                  >
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    8 to 24 characters.
-                    <br />
-                    Must include uppercase and lowercase letters, a number and a
-                    special character.
-                    <br />
-                    Allowed special characters:{" "}
-                    <span aria-label="exclamation mark">!</span>{" "}
-                    <span aria-label="at symbol">@</span>{" "}
-                    <span aria-label="hashtag">#</span>{" "}
-                    <span aria-label="dollar sign">$</span>{" "}
-                    <span aria-label="percent">%</span>
-                  </p>
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faHome} className="icon" />
 
-                  <label htmlFor="confirm_pwd">
-                    Confirm Password:
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className={validMatch && matchPwd ? "valid" : "hide"}
+                    <input
+                      type="text"
+                      id="City name"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setCity(e.target.value)}
+                      value={city}
+                      required
                     />
-                    <FontAwesomeIcon
-                      icon={faTimes}
-                      className={validMatch || !matchPwd ? "hide" : "invalid"}
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faLock} className="icon" />
+
+                    <label htmlFor="password">
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className={validPwd ? "valid" : "hide"}
+                      />
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        className={validPwd || !password ? "hide" : "invalid"}
+                      />
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={password}
+                      required
+                      aria-invalid={validPwd ? "false" : "true"}
+                      aria-describedby="pwdnote"
+                      onFocus={() => setPwdFocus(true)}
+                      onBlur={() => setPwdFocus(false)}
                     />
-                  </label>
-                  <input
-                    type="password"
-                    id="confirm_pwd"
-                    onChange={(e) => setMatchPwd(e.target.value)}
-                    value={matchPwd}
-                    required
-                    aria-invalid={validMatch ? "false" : "true"}
-                    aria-describedby="confirmnote"
-                    onFocus={() => setMatchFocus(true)}
-                    onBlur={() => setMatchFocus(false)}
-                  />
-                  <p
-                    id="confirmnote"
-                    className={
-                      matchFocus && !validMatch ? "instructions" : "offscreen"
-                    }
-                  >
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    Must match the first password input field.
-                  </p>
+                    <p
+                      id="pwdnote"
+                      className={
+                        pwdFocus && !validPwd ? "instructions" : "offscreen"
+                      }
+                    >
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                      8 to 24 characters.
+                      <br />
+                      Must include uppercase and lowercase letters, a number and
+                      a special character.
+                      <br />
+                      Allowed special characters:{" "}
+                      <span aria-label="exclamation mark">!</span>{" "}
+                      <span aria-label="at symbol">@</span>{" "}
+                      <span aria-label="hashtag">#</span>{" "}
+                      <span aria-label="dollar sign">$</span>{" "}
+                      <span aria-label="percent">%</span>
+                    </p>
+                  </div>
+                  <div className="float row">
+                    <FontAwesomeIcon icon={faLock} className="icon" />
+                    <label htmlFor="confirm_pwd">
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className={validMatch && matchPwd ? "valid" : "hide"}
+                      />
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        className={validMatch || !matchPwd ? "hide" : "invalid"}
+                      />
+                    </label>
+                    <input
+                      type="password"
+                      id="confirm_pwd"
+                      onChange={(e) => setMatchPwd(e.target.value)}
+                      value={matchPwd}
+                      required
+                      aria-invalid={validMatch ? "false" : "true"}
+                      aria-describedby="confirmnote"
+                      onFocus={() => setMatchFocus(true)}
+                      onBlur={() => setMatchFocus(false)}
+                    />
+                    <p
+                      id="confirmnote"
+                      className={
+                        matchFocus && !validMatch ? "instructions" : "offscreen"
+                      }
+                    >
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                      Must match the first password input field.
+                    </p>
+                  </div>
                 </div>
               </div>
 

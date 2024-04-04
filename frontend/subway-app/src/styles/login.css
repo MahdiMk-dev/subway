@@ -19,7 +19,7 @@ html {
   background-image: url("../images/hero_stations.jpg");
   background-size: cover;
   background-attachment: fixed;
-  backdrop-filter: blur(5px);
+  filter:blur(100%) ;
 }
 
 .App {
@@ -64,9 +64,6 @@ a:visited {
   color: #fff;
 }
 
-input[type="email"],
-input[type="text"],
-input[type="password"],
 select,
 button,
 textarea {
@@ -75,7 +72,16 @@ textarea {
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
-
+input[type="email"],
+input[type="text"],
+input[type="password"],
+input[type="date"]
+ {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
 label,
 button {
   margin-top: 1rem;
@@ -133,6 +139,7 @@ li {
 
 .line {
   display: inline-block;
+  color: rgb(250, 210, 115);
 }
 
 .flexGrow {
@@ -157,4 +164,12 @@ li {
 .xmark:hover{
   color: red;
   cursor: pointer;
+}
+.icon{
+  background-color: white;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  font-size: 1.3rem;
+  color: rgb(11, 108, 136);
+  align-self: center;
+  padding: 10px;
 }
