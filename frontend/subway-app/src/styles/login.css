@@ -35,7 +35,7 @@ html {
   padding: 1rem 0.5rem;
 }
 
-section {
+.Passengerlogin section {
   border-radius: 20px;
   color: white;
   text-align: center;
@@ -50,30 +50,30 @@ section {
   z-index: 10rem;
 }
 
-.login-inputs {
+.Passengerlogin .login-inputs {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   width: min-content;
   align-self: center;
 }
-.form-inputs {
+.Passengerlogin .form-inputs {
   display: flex;
   flex-grow: 1;
   width: min-content;
   align-self: center;
 }
-a,
-a:visited {
+.Passengerlogin a,
+.Passengerlogin a:visited {
   color: #fff;
 }
 
-input[type="email"],
-input[type="text"],
-input[type="password"],
-select,
-button,
-textarea {
+.Passengerlogin input[type="email"],
+.Passengerlogin input[type="text"],
+.Passengerlogin input[type="password"],
+.Passengerlogin select,
+.Passengerlogin button,
+.Passengerlogin textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;

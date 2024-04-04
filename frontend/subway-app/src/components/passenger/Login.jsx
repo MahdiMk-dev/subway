@@ -41,8 +41,9 @@ const Login = () => {
             const { token, passenger } = response.data;
     
             localStorage.setItem('token', token);
+            localStorage.setItem('login', true);
             
-            navigate('/profile');
+            navigate('/');
         } catch (err) {
             if (err.response && err.response.status === 401) {
                 setErrMsg('Invalid email or password');
@@ -56,7 +57,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
+
       <div className="Passengerlogin">
         <section>
           <p
@@ -86,29 +87,7 @@ const Login = () => {
               value={password}
               required
             />
-            <label>User Type:</label>
-            <select
-              value={userType}
-              onChange={(e) => setUserType(e.target.value)}
-            >
-              <option value="passenger">Passenger</option>
-              <option
-                value="branch"
-                onClick={() => {
-                  navigate("/admin_login");
-                }}
-              >
-                Branch
-              </option>
-              <option
-                value="headquarters"
-                onClick={() => {
-                  navigate("/admin_login");
-                }}
-              >
-                Headquarters
-              </option>
-            </select>
+
             <button type="submit">Login</button>
           </form>
           <p>

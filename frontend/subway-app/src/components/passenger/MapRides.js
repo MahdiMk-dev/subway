@@ -120,7 +120,7 @@ const newRides = rides.map(ride => {
     <>
       <MapContainer
         center={[52.370216,4.895168]}
-        zoom={3}
+        zoom={6}
         zoomControl={false}
         style={{ height: "100vh", width: "100%", padding: 0 }}
         whenCreated={map => setMap(map)}

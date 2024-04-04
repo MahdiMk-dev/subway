@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
     <Topbar />
-      <div className="container">
+      <div className="admincontainer">
         <Sidebar />
     <div className="home">
 
