@@ -96,7 +96,7 @@ const Register = () => {
       setMatchPwd("");
       localStorage.setItem("login", true);
       localStorage.setItem("userID", response.data.user.id);
-      navigate("/profile/userId:" + response.data.user.id);
+      navigate("/profile");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");

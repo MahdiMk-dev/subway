@@ -34,9 +34,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/profile/:userId" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
           <Route path="/tripreview/:tripId" element={<TripReview />} />
           <Route path="/" element={<Landing/>} />
+          <Route path="/Passes" element={<Passes/>} />
           <Route path="/admin" element={<Home />} />
 
           <Route path="/users" element={<UserList />} />

@@ -55,7 +55,7 @@ const Login = () => {
       setPassword("");
       localStorage.setItem("login", true);
       localStorage.setItem("userID", response.data.passenger.id);
-      navigate("/profile/userId:" + response.data.passenger.id);
+      navigate("/profile");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
