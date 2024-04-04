@@ -1,6 +1,10 @@
 import "./styles/App.css";
-import Home from "./components/admin/Home";
+import "./styles/index.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+
+import Home from "./components/admin/Home";
 import UserList from "./components/admin/UserList";
 import TripsList from "./components/admin/TripsList";
 import User from "./components/admin/User";
@@ -23,6 +27,8 @@ import Login from "./components/passenger/Login";
 
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
+import Landing from "./components/passenger/Landing";
+import MaP from "./components/passenger/Map";
 import Register from './components/passenger/Register';
 
 import React from 'react';
