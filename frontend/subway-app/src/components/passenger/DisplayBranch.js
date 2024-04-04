@@ -3,11 +3,20 @@ import "../../styles/home.css";
 import { useState } from "react";
 import axios from "axios";
 import dateFormat, { masks } from "dateformat";
+import { useNavigate } from "react-router-dom";
 
 function DisplayBranch({ origin, destination, time, price }) {
+  const navigate = useNavigate()
   const [amount,SetAmount] = useState(0)
   const buyTicket = () =>{
-    navigate("/Passes",{tickets:destination,quantity:amount})
+    const isLogin = localStorage.getItem("login")
+    if(isLogin){
+    axios.post("//localhost:8000/api/buytickets",amount).then((respone)=>{
+      console.log(respone.message)
+    })}
+    else{
+      navigate("/login")
+    }
   }
   return (
     <div className="displayBranch">

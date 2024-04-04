@@ -17,7 +17,7 @@ function Navbar() {
         <nav className="passenger">
           <Link to="/"> Home</Link>
           <Link to="/Map">View Map</Link>
-          <Link to="/Passes">Buy Tickets</Link>
+          <Link to="/Passes">Buy Passes</Link>
           {isLogin ? (
             <>
               <Link to={"/profile/userId:" + id}>Profile</Link>{" "}
