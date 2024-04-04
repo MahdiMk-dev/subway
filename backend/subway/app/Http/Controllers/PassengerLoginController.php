@@ -2,55 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Passenger;
-use App\Models\Branch;
-use App\Models\Headquarters;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\passenger;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Str;;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class PassengerLoginController extends Controller
 {
     // Handle the login request
     public function login(Request $request)
     {
-        // Validate the request data
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-            'userType' => 'required|in:passenger,branch,headquarters',
+        $passenger = passenger::where('email', $request->email)->first();
+        if (!$passenger) {
+             return response()->json(['message' => 'Invalid Email','status'=>'fail'], 401);
+}
+
+        if (!password_verify($request->password, $passenger->password)) {
+             return response()->json(['message' => 'Invalid password','status'=>'fail'], 401);
+}
+        
+        $token = JWTAuth::fromUser($passenger,[
+            'id' => $passenger->id
         ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Invalid data', 'status' => 'fail'], 400);
-        }
-
-        // Select the appropriate model based on the user type
-        switch ($request->userType) {
-            case 'passenger':
-                $userModel = Passenger::class;
-                break;
-            case 'branch':
-                $userModel = Branch::class;
-                break;
-            case 'headquarters':
-                $userModel = Headquarters::class;
-                break;
-            default:
-                return response()->json(['message' => 'Invalid user type', 'status' => 'fail'], 400);
-        }
-
-        // Attempt to retrieve the user by email
-        $user = $userModel::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials', 'status' => 'fail'], 401);
-        }
-
-        // Generate JWT token
-        $token = JWTAuth::fromUser($user);
-
-        return response()->json(['message' => 'Login successful', 'status' => 'success', 'token' => $token], 200);
+        return response()->json(['message' => 'Login successful','status'=>'success','token'=>$token,'passenger'=>$passenger], 200);
+    
     }
+
 }

@@ -19,6 +19,8 @@ use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\PassengerSignupController;
 use App\Http\Controllers\MapController;
  
+use App\Http\Controllers\DisplayTrips;
+use App\Http\Controllers\buyTickets;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -61,3 +63,7 @@ Route::delete('/delete_admin_ride/{id}', [AdminRidesController::class, 'delete_r
 Route::post('/updateadminride/', [AdminRidesController::class, 'updateride']);
 Route::get('/messagepassenger/', [AdminMessagesController::class, 'getmessagepassenger']);
 Route::post('/create_message/', [AdminMessagesController::class, 'create_message']);
+
+Route::get('/displayTrips', [DisplayTrips::class, 'displayAll']);
+Route::get('/RecomendedTrips', [DisplayTrips::class, 'recomended']);
+Route::post('/buytickets', [buyTickets::class, 'buy']);

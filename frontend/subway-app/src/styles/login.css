@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 /*
 * {
     margin: 0;
@@ -31,49 +31,51 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   padding: 1rem 0.5rem;
 }
 
-.Passengerlogin section {
-    border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-
+section {
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
-  background-color: rgb(11, 108, 136);    
+  background-color: rgb(11, 108, 136);
   margin-left: auto;
   margin-right: auto;
   z-index: 10rem;
 }
 
-.Passengerlogin form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
-    
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: min-content;
+  align-self: center;
+}
+.form-inputs {
+  display: flex;
+  flex-grow: 1;
+  width: min-content;
+  align-self: center;
+}
+a,
+a:visited {
+  color: #fff;
 }
 
-.Passengerlogin a, a:visited {
-    color: #fff;
-}
-
-.Passengerlogin input[type="email"],
-.Passengerlogin input[type="text"],
-.Passengerlogin input[type="password"],
-.Passengerlogin input[type="date"],
-.Passengerlogin input[type="tel"],
-.Passengerlogin input[type="number"],
-.Passengerlogin select,
-.Passengerlogin button,
-.Passengerlogin textarea {
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
+input[type="email"],
+input[type="text"],
+input[type="password"],
+select,
+button,
+textarea {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
 }
@@ -93,53 +95,70 @@ html {
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .instructions > svg {
-    margin-right: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .line {
-    display: inline-block;
+  display: inline-block;
 }
 
 .flexGrow {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.popup{
+  position: fixed;
+  padding: 10px;
+  align-self: center;
+  background-color: white;
+  border: 3px solid greenyellow;
+  border-radius: 15px;
+  color: black;
+  font-size: 20px;
+  margin-left: 45%;
+  margin-top: 5%;
+
+}
+.xmark:hover{
+  color: red;
+  cursor: pointer;
 }

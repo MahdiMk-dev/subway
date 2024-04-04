@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Passenger;
+use App\Models\passenger;
+use App\Models\station;
 use Illuminate\Support\Facades\Hash;
 
 class PassengerSignupController extends Controller
@@ -12,16 +13,14 @@ class PassengerSignupController extends Controller
     // Handle the signup request
     public function signup(Request $request)
     {
-        $passenger = new Passenger();
+        // Create a new passenger instance
+        $passenger = new passenger();
         $passenger->email = $request->email;
         $passenger->first_name = $request->first_name;
         $passenger->last_name = $request->last_name;
-        $passenger->dob = $request->dob;
         $passenger->phone_number = $request->phone_number;
         $passenger->city = $request->city;
-        $passenger->image_url=$request->image_url;
-        $passenger->gender = $request->gender;
-        $passenger->balance = $request->balance;
+        $passenger->dob = $request->dob;
 
         
         $passenger->password = Hash::make($request->password);
@@ -32,6 +31,6 @@ class PassengerSignupController extends Controller
         $passenger->save();
 
         // Return a success response
-        return response()->json(['message' => 'Signup successful', 'status' => 'success'], 201);
+        return response()->json(['message' => 'Signup successful', 'status' => 'success','user'=>$passenger], 201);
     }
 }

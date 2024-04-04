@@ -28,8 +28,8 @@ import MapRides from "./components/passenger/MapRides";
 import Landing from "./components/passenger/Landing";
 import TripReview from "./components/passenger/TripReview";
 import MaP from "./components/passenger/Map";
-import Register from './components/passenger/Register';
-
+import Register from "./components/passenger/Register";
+import Passes from "./components/passenger/Passes";
 
 function App() {
   return (

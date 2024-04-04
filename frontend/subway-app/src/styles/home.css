@@ -1,49 +1,42 @@
-.display-btns .button{
-    border-radius: 8px;
-    background-color: #FAD273;
+.displayBranch .ticketsCount {
+    border-radius: 5px;
     border-color: transparent;
-    width: fit-content;
-    margin-bottom: 10px;
+    background-color: white;
+    font-size: 16px;
+    opacity: 70%;
+    color: black;
+    max-width: 80px;
+    max-height: 25px;
+    margin-top: 10px;
 }
-.displayBranch .ticketsCount{
-max-width: 50px;
+.displayBranch .button {
+  background-color: #fad273;
+  border-color: transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0px;
 }
-.Landing .button:hover{ 
-    cursor: pointer;
-    filter: brightness(50%);
+.Landing .button:hover {
+  cursor: pointer;
+  filter: brightness(50%);
 }
-.Landing .seacrh{
-    border-radius: 0px 8px 8px 0px;
-    background-color: #FAD273;
-    border-color: transparent;
-    
-    height: 100%;
+.Landing .seacrh {
+  border-radius: 0px 8px 8px 0px;
+  background-color: #fad273;
+  border-color: transparent;
+  height: 100%;
+  margin: 0px;
+}
+.Landing .seacrh:hover {
+  filter: brightness(75%);
+}
+.Landing .seacrh a{
+  text-decoration: none;
+  color: black
 }
 
-.inputs{
-    border-color: transparent;
-    border-radius: 0px 10px 10px 0px;
-    font-size: 15px;
-}
-.main{
-    margin-top: 7%;
-}
-.cards{
-    width: 100%;
-}
-.card{
-    border-radius: 20px 0px 0px 20px;
-    background-color: white;
-    
-    padding: 15px;
-    font-size: 15px;
-    height: fit-content;
-}
-.link-text{
-    color: gray;
-    background-color: transparent;
-    font-size: 16px;
-}
 .destination{
     border-radius: 10px;
     height: 150px;
@@ -72,8 +65,6 @@ max-width: 50px;
     background-color: #0B6C88;
     color: #FAD273;
 
-}
-.display-card .amount{
 
     background-color: #FAD273;
     opacity: 50%    ;
@@ -91,9 +82,4 @@ max-width: 50px;
 }
 .display-header{
     font-size: 26px;
-}
-.display-btns{
-    text-align: left;
-    padding-left: 10px;
-    row-gap: 10px;
 }

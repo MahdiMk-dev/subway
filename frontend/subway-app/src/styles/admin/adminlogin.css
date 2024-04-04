@@ -196,3 +196,7 @@
   color: #ffffff;
   box-shadow: inset 250px 0 0 0 #00008b9e;
 }
+.admin-form{
+  flex-grow: 1;
+  width: 100%;
+}

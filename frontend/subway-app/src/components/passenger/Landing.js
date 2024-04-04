@@ -4,38 +4,62 @@ import Navbar from "./navbar";
 import DisplayBranch from "./DisplayBranch";
 import DisplayBranchCard from "./DisplayBranchCard";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Landing() {
   const [branches, SetBranch] = useState([]);
   const [all, SetAll] = useState([]);
   const getAllBranches = () => {
     const arr = [];
-    for (let i = 0; i < 7; i++) {
-      const branch = (
-        <DisplayBranch destination="Italy" time="12:30" price="1300$" />
-      );
-      arr.push(branch);
-    }
-    SetAll(arr);
+    axios.get("//localhost:8000/api/displayTrips").then((response) => {
+      const trip = response.data.tripsDestination;
+      const origin = response.data.tripOrigin;
+      for (let i = 0; i < trip.length; i++) {
+        const branch = (
+          <DisplayBranch
+            trip_id={trip[i].id}
+            status={trip[i].status}
+            destination={trip[i].city}
+            origin={origin[i].city}
+            time={trip[i].departure_time}
+            price={trip[i].price}
+          />
+        );
+        arr.push(branch);
+      }
+      SetAll(arr);
+    });
   };
+
   const displayBranch = () => {
     const arr = [];
-    for (let i = 0; i < 12; i++) {
-      const branch = (
-        <DisplayBranchCard destination="Italy" time="12:30" price="1300$" imgurl="https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
-      );
-      arr.push(branch);
-    }
-    SetBranch(arr);
+    axios.get("//localhost:8000/api/RecomendedTrips").then((response) => {
+      const trip = response.data.trips;
+      for (let i = 0; i < trip.length; i++) {
+        const branch = (
+          <DisplayBranchCard
+            trip_id={trip[i].id}
+            status={trip[i].status}
+            destination={trip[i].city}
+            time={trip[i].departure_time}
+            price={trip[i].price}
+            imgurl={""}
+          />
+        );
+        arr.push(branch);
+      }
+      SetBranch(arr);
+    });
   };
   useEffect(() => {
     displayBranch();
-    getAllBranches()
+    getAllBranches();
   }, []);
   return (
     <div className="Landing">
       <Navbar />
-      <div className="main float space-even">
+      <div className="main float space-even gap">
         <div className="right">
           <div className="float">
             <div className="card">
@@ -76,18 +100,19 @@ function Landing() {
               </div>
             </div>
             <div>
-              <button className="seacrh">Search</button>
+              <button className="seacrh">
+                <Link to={"/Map"}>Search</Link>
+              </button>
             </div>
           </div>
           <div className="row float space-between">
             <div className="link-text">Upcoming Trains</div>
           </div>
-          <div id="display" className="over-flow">
+          <div id="display" className="over-flow container">
             {all.map((branch) => {
               return <div className="row">{branch}</div>;
             })}
           </div>
-          
         </div>
         <div>
           <img
@@ -98,14 +123,13 @@ function Landing() {
         </div>
       </div>
       <div className="row float space-between">
-            <div className="link-text">Recomended</div>
-          </div>
-      <div className="cards row float over-flow space-even gap">
-
-          {branches.map((branch) => {
-              return <div className="row">{branch}</div>;
-            })}
-          </div>
+        <div className="link-text">Recomended</div>
+      </div>
+      <div className="cards row float gap">
+        {branches.map((branch) => {
+          return <div className="row">{branch}</div>;
+        })}
+      </div>
     </div>
   );
 }
