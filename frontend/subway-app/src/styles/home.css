@@ -29,6 +29,15 @@
   height: 100%;
   margin: 0px;
 }
+.Landing .seacrh:hover {
+  filter: brightness(75%);
+}
+.Landing .seacrh a{
+  text-decoration: none;
+  color: black
+}
+
+
 
 .inputs {
   border-color: transparent;

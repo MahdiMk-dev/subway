@@ -141,3 +141,20 @@ li {
   justify-content: flex-start;
   align-items: flex-end;
 }
+.popup{
+  position: fixed;
+  padding: 10px;
+  align-self: center;
+  background-color: white;
+  border: 3px solid greenyellow;
+  border-radius: 15px;
+  color: black;
+  font-size: 20px;
+  margin-left: 45%;
+  margin-top: 5%;
+
+}
+.xmark:hover{
+  color: red;
+  cursor: pointer;
+}

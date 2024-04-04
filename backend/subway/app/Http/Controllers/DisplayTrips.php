@@ -28,7 +28,7 @@ class DisplayTrips extends Controller
      */
     public function displayAll()
     {
-        $tripsDes = trip::select(['price','departure_time','stations.city'])->join('stations','stations.id','=','destination_station_id');
+        $tripsDes = trip::select("*")->join('stations','stations.id','=','destination_station_id');
         $tripsOri = trip::select('stations.city')->join('stations','stations.id','=','origin_station_id');
         if ($tripsDes && $tripsOri) {
             // Redirect back to the user profile page or return a response as needed
@@ -40,7 +40,7 @@ class DisplayTrips extends Controller
     public function recomended()
     {
 
-        $trips = trip::select(['price','departure_time','stations.city'])->join('stations','stations.id','=','origin_station_id')->join('users','stations.id','=','station_id');
+        $trips = trip::select("*")->join('stations','stations.id','=','origin_station_id')->join('users','stations.id','=','station_id');
         if ($trips) {
             // Redirect back to the user profile page or return a response as needed
             return response()->json(['status' => 'success', 'trips' => $trips->get()]);

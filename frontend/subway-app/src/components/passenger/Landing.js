@@ -18,10 +18,12 @@ function Landing() {
       for (let i = 0; i < trip.length; i++) {
         const branch = (
           <DisplayBranch
-            destination={trip[i].city}            
+            trip_id={trip[i].id}
+            status={trip[i].status}
+            destination={trip[i].city}
             origin={origin[i].city}
             time={trip[i].departure_time}
-            price={trip[i].price + "$"}
+            price={trip[i].price}
           />
         );
         arr.push(branch);
@@ -37,9 +39,11 @@ function Landing() {
       for (let i = 0; i < trip.length; i++) {
         const branch = (
           <DisplayBranchCard
+            trip_id={trip[i].id}
+            status={trip[i].status}
             destination={trip[i].city}
             time={trip[i].departure_time}
-            price={trip[i].price + "$"}
+            price={trip[i].price}
             imgurl={""}
           />
         );
@@ -55,7 +59,7 @@ function Landing() {
   return (
     <div className="Landing">
       <Navbar />
-      <div className="main float space-even gap" >
+      <div className="main float space-even gap">
         <div className="right">
           <div className="float">
             <div className="card">
@@ -96,7 +100,9 @@ function Landing() {
               </div>
             </div>
             <div>
-              <button className="seacrh"><Link to={"/Map"}>Search</Link></button>
+              <button className="seacrh">
+                <Link to={"/Map"}>Search</Link>
+              </button>
             </div>
           </div>
           <div className="row float space-between">
