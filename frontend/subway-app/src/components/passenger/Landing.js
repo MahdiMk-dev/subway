@@ -29,7 +29,9 @@ function Landing() {
         arr.push(branch);
       }
       SetAll(arr);
-    });
+    }).catch((err)=>{
+      console.log(err)
+    });;
   };
 
   const displayBranch = () => {
@@ -50,7 +52,9 @@ function Landing() {
         arr.push(branch);
       }
       SetBranch(arr);
-    });
+    }).catch((err)=>{
+      console.log(err)
+    });;
   };
   useEffect(() => {
     displayBranch();

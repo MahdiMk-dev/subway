@@ -29,6 +29,8 @@ function DisplayBranch({ trip_id, status, origin, destination, time, price }) {
         )
         .then((_) => {
           SetHide("");
+        }).catch((err)=>{
+          console.log(err)
         });
     } else {
       navigate("/login");

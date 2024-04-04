@@ -37,6 +37,8 @@ function DisplayBranchCard({
         )
         .then((_) => {
           SetHide("");
+        }).catch((err)=>{
+          console.log(err)
         });
     } else {
       navigate("/login");

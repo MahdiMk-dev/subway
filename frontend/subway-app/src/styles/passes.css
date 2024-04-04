@@ -1,0 +1,46 @@
+.ticket {
+  background-image: url("../images/image-removebg-preview.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 450px;
+  height: 150px;
+  padding: 20px;
+}
+.container {
+  width: 90%;
+  overflow-y: auto;
+}
+ul {
+  list-style: none;
+  padding-left: 10px;
+  text-align: left;
+}
+li {
+  margin-bottom: 10px;
+}
+.button {
+  align-self: center;
+  background-color: #0b6c88;
+  border-radius: 8px;
+  border-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+}
+.button:hover {
+  filter: brightness(75%);
+}
+.input {
+  align-self: center;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: white;
+  font-size: 16px;
+  opacity: 50%;
+  color: black;
+  max-width: 80px;
+  max-height: 25px;
+  align-self: baseline;
+  margin-top: 16px;
+}

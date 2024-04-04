@@ -48,11 +48,12 @@ const Login = () => {
       );
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
+      console.log(response.data.passenger.id)
       setEmail("");
       setPassword("");
       localStorage.setItem("login", true);
-      localStorage.setItem("userID",response.data.user.id)
-      navigate("/profile/userId:"+response.data.passanger.id);
+      localStorage.setItem("userID",response.data.passenger.id)
+      navigate("/profile/userId:"+response.data.passenger.id);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
