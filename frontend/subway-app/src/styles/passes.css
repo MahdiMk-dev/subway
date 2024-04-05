@@ -7,8 +7,9 @@
   padding: 20px;
 }
 .container {
-  width: 90%;
-  overflow-y: auto;
+  width: 100%;
+  flex-direction: row;
+  align-content: center;
 }
 ul {
   list-style: none;

@@ -45,10 +45,9 @@ function Passes() {
   return (
     <div>
       <Navbar />
-      <div>Search bar</div>
-      <div className="float container space-even gap over-flow">
+      <div className="float container space-even gap">
         {all.map((branch) => {
-          return <div>{branch}</div>;
+          return <div className="fit">{branch}</div>;
         })}
       </div>
     </div>

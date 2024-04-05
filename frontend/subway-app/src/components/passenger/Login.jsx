@@ -48,11 +48,10 @@ const Login = () => {
           },
         }
       );
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      console.log(response.data.passenger.id);
+      const accessToken = response.data.token;    
       setEmail("");
       setPassword("");
+      localStorage.setItem("token", accessToken);
       localStorage.setItem("login", true);
       localStorage.setItem("userID", response.data.passenger.id);
       navigate("/profile");
