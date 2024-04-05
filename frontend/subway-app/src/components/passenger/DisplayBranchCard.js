@@ -19,6 +19,7 @@ function DisplayBranchCard({
   const passenger_id = localStorage.getItem("userID");
   const navigate = useNavigate();
   const [hide, SetHide] = useState("hide");
+  const token = localStorage.getItem("token");
   const [amount, SetAmount] = useState(1);
   const buyTicket = () => {
     const isLogin = localStorage.getItem("login");
@@ -27,21 +28,38 @@ function DisplayBranchCard({
       axios
         .post(
           "//localhost:8000/api/buytickets",
-          JSON.stringify({ passenger_id, trip_id, status, quantity }),
+          JSON.stringify({ trip_id, status, quantity }),
           {
             headers: {
               "Content-Type": "application/json",
-              withCredentials: true,
+              'Authorization': `Bearer ${token}`
             },
           }
         )
-        .then((_) => {
-          SetHide("");
-        }).catch((err)=>{
-          console.log(err)
+        .then((response) => {
+          // Handle successful response
+          if(response.data.status==='success')
+          window.location.reload();
+        else alert(response.data.message) // Optionally, log the response data
+          SetHide(""); // Assuming SetHide is a function to update state or hide something
+        })
+        .catch((error) => {
+          // Handle error
+          console.error('Error:', error);
+          // Optionally, you can also handle specific error statuses, e.g., if you want to show different messages for different errors
+          if (error.response) {
+            // The request was made and the server responded with a status code that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error:', error.message);
+          }
         });
-    } else {
-      navigate("/login");
     }
   };
   return (

@@ -38,8 +38,9 @@ use App\Http\Controllers\getPassenger;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login', [PassengerLoginController::class, 'login']);
 
+Route::post('/login', [PassengerLoginController::class, 'login']);
+Route::post('/editinfo', [PassengerController::class, 'editinfo']);
 Route::post('/signup', [PassengerSignupController::class, 'signup']);
 Route::post('/show', [PassengerController::class, 'show']);
 Route::post('/addreview', [PassengerController::class, 'addreview']);

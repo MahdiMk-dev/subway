@@ -34,14 +34,28 @@ class PassengerController extends Controller
         $passenger = Passenger::findOrFail($passengerId);
     
         // Retrieve all trips for the passenger through tickets table
-        $previousTrips = ticket::with(['passenger','trip.originStation','trip.destinationStation'])->whereHas('trip', function ($query) {
-            $query->where('arrival_time', '<', Carbon::today());
-        })->get();
+
+        $previousTrips = ticket::with(['passenger', 'trip.originStation', 'trip.destinationStation'])
+            ->whereHas('passenger', function ($query) use ($passengerId) {
+                $query->where('id', $passengerId);
+            })
+            ->whereHas('trip', function ($query) {
+                $query->where('arrival_time', '<', Carbon::today());
+            })
+            ->get();
+        
     
         // Retrieve previous trips for the passenger (trips before today's date)
-        $trips = ticket::with(['passenger','trip.originStation','trip.destinationStation'])->whereHas('trip', function ($query) {
-            $query->where('arrival_time', '>', Carbon::today());
-        })->get();
+
+        $trips = ticket::with(['passenger', 'trip.originStation', 'trip.destinationStation'])
+            ->whereHas('passenger', function ($query) use ($passengerId) {
+                $query->where('id', $passengerId);
+            })
+            ->whereHas('trip', function ($query) {
+                $query->where('arrival_time', '>', Carbon::today());
+            })
+            ->get();
+        
         $messages=message::with(['passenger','user'])->where('passenger_id',$passengerId)->get();
         $coins=coin_request::with(['passenger'])->where('passenger_id',$passengerId)->get();
                        
@@ -175,5 +189,37 @@ try{
            // Other exceptions
            return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
    }
+}
+public function editinfo(Request $request)
+{
+try{
+    // Extract the passenger ID from the JWT token payload
+    $token = JWTAuth::parseToken();
+    $passengerId = $token->getPayload()->get('sub');
+
+    // Create a new coin request instance
+    $passenger = Passenger::findOrFail($passengerId);
+    $passenger->first_name = $$request->first_name;
+    $passenger->last_name = $request->last_name;
+    $passenger->city = $request->city;
+    $passenger->phone_number = $request->phone_number;
+    $passenger->dob = $request->dob;
+    $passenger->save();
+
+    // Return success response
+    return response()->json([
+        'status'=>'success',
+        'message' => 'updated successfully',
+    ], 201);
+}catch (TokenExpiredException $e) {
+            
+    return response()->json(['status'=>'fail','message' => 'token_expired'], 401);
+} catch (TokenInvalidException $e) {
+       // Token is invalid
+       return response()->json(['status'=>'fail','message' => 'token_invalid'], 401);
+} catch (\Exception $e) {
+       // Other exceptions
+       return response()->json(['status'=>'fail','message' => 'token_exception'], 401);
+}
 }
 }

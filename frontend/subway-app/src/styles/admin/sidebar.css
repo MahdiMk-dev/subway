@@ -5,7 +5,10 @@
     position: sticky;
     top: 50px;
   }
-  
+  .admincontainer{
+    display: flex;
+    flex-direction: row;
+  }
   .sidebarWrapper {
     padding: 20px;
     color: #555;

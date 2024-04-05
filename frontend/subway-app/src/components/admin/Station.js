@@ -95,7 +95,7 @@ function Station() {
   return (
     <div>
     <Topbar />
-      <div className="admincontainer">
+      <div className="container">
         <Sidebar />
     <div className="product">
       <div className="productTitleContainer">
@@ -112,7 +112,7 @@ function Station() {
                   <label>Longitude</label>
                   <input type="text" id="lng" placeholder={data.lng} onChange={handleChange} required value={data.lng}/>
                   <label>City</label>
-                  <select name="city" id="city" value={data.city} onChange={handleChange} required value={data.city}>
+                  <select name="city" id="city"  onChange={handleChange} required value={data.city}>
                       <option value="rome">Rome</option>
                       <option value="newyork">Newyork</option>
                   </select>
