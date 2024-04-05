@@ -47,7 +47,7 @@ function Passes() {
       <Navbar />
       <div className="float container space-even gap">
         {all.map((branch) => {
-          return <div className="fit">{branch}</div>;
+          return <div className="fit row">{branch}</div>;
         })}
       </div>
     </div>
