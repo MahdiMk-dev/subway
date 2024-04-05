@@ -34,14 +34,28 @@ class PassengerController extends Controller
         $passenger = Passenger::findOrFail($passengerId);
     
         // Retrieve all trips for the passenger through tickets table
-        $previousTrips = ticket::with(['passenger','trip.originStation','trip.destinationStation'])->whereHas('trip', function ($query) {
-            $query->where('arrival_time', '<', Carbon::today());
-        })->get();
+
+        $previousTrips = ticket::with(['passenger', 'trip.originStation', 'trip.destinationStation'])
+            ->whereHas('passenger', function ($query) use ($passengerId) {
+                $query->where('id', $passengerId);
+            })
+            ->whereHas('trip', function ($query) {
+                $query->where('arrival_time', '<', Carbon::today());
+            })
+            ->get();
+        
     
         // Retrieve previous trips for the passenger (trips before today's date)
-        $trips = ticket::with(['passenger','trip.originStation','trip.destinationStation'])->whereHas('trip', function ($query) {
-            $query->where('arrival_time', '>', Carbon::today());
-        })->get();
+
+        $trips = ticket::with(['passenger', 'trip.originStation', 'trip.destinationStation'])
+            ->whereHas('passenger', function ($query) use ($passengerId) {
+                $query->where('id', $passengerId);
+            })
+            ->whereHas('trip', function ($query) {
+                $query->where('arrival_time', '>', Carbon::today());
+            })
+            ->get();
+        
         $messages=message::with(['passenger','user'])->where('passenger_id',$passengerId)->get();
         $coins=coin_request::with(['passenger'])->where('passenger_id',$passengerId)->get();
                        

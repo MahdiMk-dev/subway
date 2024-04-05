@@ -62,6 +62,7 @@ function App() {
           <Route path="/newmessage" element={<NewMessage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Passes" element={<Passes/>} />
   
         </Routes>
     </Router>

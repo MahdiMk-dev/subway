@@ -21,11 +21,15 @@ use App\Http\Controllers\MapController;
  
 use App\Http\Controllers\DisplayTrips;
 use App\Http\Controllers\buyTickets;
+use App\Http\Controllers\buyPass;
+use App\Http\Controllers\getPassenger;
+use App\Http\Controllers\DisplayRides;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/login', [PassengerLoginController::class, 'login']);
 Route::post('/editinfo', [PassengerController::class, 'editinfo']);
 Route::post('/signup', [PassengerSignupController::class, 'signup']);
@@ -68,5 +72,10 @@ Route::post('/create_message/', [AdminMessagesController::class, 'create_message
 Route::get('/displayTrips', [DisplayTrips::class, 'displayAll']);
 Route::get('/RecomendedTrips', [DisplayTrips::class, 'recomended']);
 Route::post('/buytickets', [buyTickets::class, 'buy']);
+Route::post('/buytickets', [buyTickets::class, 'buy']);
+
+Route::get('/displayRides', [DisplayRides::class, 'displayAll']);
+Route::post('/buyPass', [buyPass::class, 'buy']);
+Route::post('/getPassenger', [getPassenger::class, 'getPass']);
 
 

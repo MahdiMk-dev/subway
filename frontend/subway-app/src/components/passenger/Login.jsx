@@ -42,6 +42,7 @@ const Login = () => {
     
             localStorage.setItem('token', token);
             localStorage.setItem('login', true);
+            localStorage.setItem("userID", response.data.passenger.id);
             
             navigate('/');
         } catch (err) {
@@ -97,6 +98,7 @@ const Login = () => {
               <Link to="/register">Sign Up</Link>
             </span>
           </p>
+          <a href='/admin_login'>admin</a>
         </section>
       </div>
     </div>
